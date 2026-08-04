@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, FileCheck, CheckCircle2, Eye, Download, Award, Lock, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
+import { ShieldCheck, FileCheck, CheckCircle2, Eye, Download, Award, Lock, ExternalLink, BarChart3 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface Disbursement {
@@ -35,8 +36,8 @@ export default function TransparencyPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
       
       {/* Banner */}
-      <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800">
-        <div className="max-w-3xl space-y-4 relative z-10">
+      <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <div className="max-w-2xl space-y-4 relative z-10">
           <div className="inline-flex items-center space-x-2 bg-emerald-950 border border-emerald-800 text-emerald-400 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
             <span>100% Verified NGO Audit</span>
@@ -47,6 +48,16 @@ export default function TransparencyPage() {
           <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
             Every dollar contributed is logged with photographic delivery receipts, bank settlement codes, and independent audit verification.
           </p>
+        </div>
+
+        <div className="relative z-10 shrink-0">
+          <Link
+            href="/transparency/report"
+            className="px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-lg transition-colors"
+          >
+            <BarChart3 className="w-4 h-4" />
+            <span>Interactive Financial Report</span>
+          </Link>
         </div>
       </div>
 
@@ -90,13 +101,13 @@ export default function TransparencyPage() {
             <h2 className="text-2xl font-extrabold text-slate-900">Public Disbursement & Delivery Proof Feed</h2>
             <p className="text-sm text-slate-500">Live feed of completed fund allocations with photo evidence</p>
           </div>
-          <button
-            onClick={() => alert("Annual Financial Audit PDF (2025-2026) downloaded successfully.")}
+          <Link
+            href="/transparency/report"
             className="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 flex items-center space-x-2 shadow-sm"
           >
-            <Download className="w-4 h-4" />
-            <span>Download Annual Audit PDF</span>
-          </button>
+            <Download className="w-4 h-4 text-amber-400" />
+            <span>Annual Audit Report</span>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

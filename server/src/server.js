@@ -68,6 +68,17 @@ let localMedicalRecords = [
   }
 ];
 
+let localVolunteers = [
+  {
+    email: "volunteer@example.org",
+    name: "Tanvir Ahsan",
+    hoursLogged: 24,
+    role: "Senior Companion & Relief Coordinator",
+    certificateId: "CERT-2026-8941",
+    issuedDate: "2026-07-31"
+  }
+];
+
 // 1. Health check & System Status
 app.get('/api/v1/health', (req, res) => {
   res.json({
@@ -179,7 +190,22 @@ app.post('/api/v1/residents/:id/medical-records', (req, res) => {
   res.status(201).json({ success: true, message: 'Medical record logged!', data: newRecord });
 });
 
-// 5. Campaigns API
+// 5. Volunteer Hour & Certificate API
+app.get('/api/v1/volunteers/certificate/:email', (req, res) => {
+  const { email } = req.params;
+  const volunteer = localVolunteers.find(v => v.email.toLowerCase() === email.toLowerCase()) || {
+    email: email,
+    name: email.split('@')[0].toUpperCase(),
+    hoursLogged: 16,
+    role: "Community Relief Volunteer",
+    certificateId: `CERT-2026-${Math.floor(1000 + Math.random() * 9000)}`,
+    issuedDate: new Date().toISOString().split('T')[0]
+  };
+
+  res.json({ success: true, data: volunteer });
+});
+
+// 6. Campaigns API
 app.get('/api/v1/campaigns', async (req, res) => {
   try {
     if (isDbConnected() && db) {
@@ -214,7 +240,7 @@ app.post('/api/v1/admin/campaigns', async (req, res) => {
   }
 });
 
-// 6. Beneficiary Application & Verification Workflow
+// 7. Beneficiary Application & Verification Workflow
 app.post('/api/v1/beneficiaries/apply', async (req, res) => {
   try {
     const newApplication = {
@@ -255,7 +281,7 @@ app.get('/api/v1/admin/beneficiaries', async (req, res) => {
     }
     return res.json({ success: true, data: localBeneficiariesStore });
   } catch (err) {
-    res.status(500).json({ success: false, error: err.message, data: localBeneficiariesStore });
+    res.status(500).json({ success: false, error: error.message, data: localBeneficiariesStore });
   }
 });
 
@@ -291,7 +317,7 @@ app.patch('/api/v1/admin/beneficiaries/:id/verify', async (req, res) => {
   }
 });
 
-// 7. Donation Processing Endpoint
+// 8. Donation Processing Endpoint
 app.post('/api/v1/donations', async (req, res) => {
   try {
     const { donorName, email, amount, isRecurring, type, targetId, paymentMethod } = req.body;
@@ -330,12 +356,30 @@ app.post('/api/v1/donations', async (req, res) => {
   }
 });
 
-// 8. Transparency & Disbursements
+// 9. Transparency & Financial Report Breakdown
 app.get('/api/v1/transparency/disbursements', (req, res) => {
   res.json({
     success: true,
     data: localDisbursementsStore,
     totalDisbursed: localDisbursementsStore.reduce((sum, item) => sum + item.amount, 0)
+  });
+});
+
+app.get('/api/v1/transparency/financial-summary', (req, res) => {
+  res.json({
+    success: true,
+    data: {
+      fiscalYear: "2025-2026",
+      totalRaised: 48500,
+      totalDisbursed: 42100,
+      breakdown: [
+        { category: "Elderly Housing & Medical Care", amount: 24500, percent: 58 },
+        { category: "Seasonal Relief Aid (Blankets/Food)", amount: 12600, percent: 30 },
+        { category: "Clean Water & Infrastructure", amount: 5000, percent: 12 }
+      ],
+      auditorStatus: "Fully Certified (Zero Leakage)",
+      auditorName: "Standard & Global NGO Audit Board"
+    }
   });
 });
 
@@ -363,7 +407,7 @@ app.post('/api/v1/admin/disbursements', async (req, res) => {
   }
 });
 
-// 9. Impact Stats & Dashboard Overview Summary
+// 10. Impact Stats & Dashboard Overview Summary
 app.get('/api/v1/stats', (req, res) => {
   const pendingApprovalsCount = localBeneficiariesStore.filter(b => b.status === 'Pending Verification').length;
   const totalDonationAmount = localDonationsStore.reduce((sum, d) => sum + d.amount, 0) + 48500;

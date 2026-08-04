@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Users, Calendar, Award, CheckCircle, Clock, Heart, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -23,8 +24,8 @@ export default function VolunteerPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
       
       {/* Banner */}
-      <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden">
-        <div className="max-w-3xl space-y-4 relative z-10">
+      <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <div className="max-w-2xl space-y-4 relative z-10">
           <div className="inline-flex items-center space-x-2 bg-emerald-700/80 px-3.5 py-1.5 rounded-full text-amber-300 text-xs font-bold uppercase tracking-wider">
             <Users className="w-4 h-4" />
             <span>On-Ground Impact</span>
@@ -32,9 +33,19 @@ export default function VolunteerPage() {
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
             Volunteer Network & Hour Certificate Tracking
           </h1>
-          <p className="text-emerald-100 text-base sm:text-lg leading-relaxed">
+          <p className="text-emerald-100 text-base leading-relaxed">
             Spend meaningful hours listening to elderly stories, assisting medical checkup camps, or distributing seasonal winter blankets. Earn certified volunteer credit hours.
           </p>
+        </div>
+
+        <div className="relative z-10 shrink-0">
+          <Link
+            href="/volunteer/certificate"
+            className="px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs flex items-center justify-center space-x-2 shadow-lg transition-colors"
+          >
+            <Award className="w-4 h-4 text-slate-900" />
+            <span>Get Official Service Certificate</span>
+          </Link>
         </div>
       </div>
 
