@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Home, Users, Gift, ShieldCheck, Menu, X, HandHeart, UserCheck, LayoutDashboard } from 'lucide-react';
+import { Heart, Home, Users, Gift, ShieldCheck, Menu, X, HandHeart, UserCheck, LayoutDashboard, User, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function Navbar() {
@@ -25,11 +25,13 @@ export function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '/', icon: Home },
-    { name: 'Elderly Care Wing', href: '/elderly-care', icon: Heart },
-    { name: 'Causes & Campaigns', href: '/campaigns', icon: Gift },
-    { name: 'Trust & Transparency', href: '/transparency', icon: ShieldCheck },
-    { name: 'Apply for Aid', href: '/beneficiary/apply', icon: HandHeart },
+    { name: 'Elderly Care', href: '/elderly-care', icon: Heart },
+    { name: 'Campaigns', href: '/campaigns', icon: Gift },
+    { name: 'Transparency', href: '/transparency', icon: ShieldCheck },
+    { name: 'Apply Aid', href: '/beneficiary/apply', icon: HandHeart },
+    { name: 'Donor Portal', href: '/donor/dashboard', icon: User },
     { name: 'Admin', href: '/admin', icon: LayoutDashboard },
+    { name: 'Help', href: '/help', icon: HelpCircle },
   ];
 
   return (
@@ -58,7 +60,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5 bg-white/60 p-1.5 rounded-full border border-slate-200/80 shadow-sm backdrop-blur-sm">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-1 bg-white/60 p-1.5 rounded-full border border-slate-200/80 shadow-sm backdrop-blur-sm">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -66,13 +68,13 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3.5 py-1.5 rounded-full text-xs lg:text-sm font-semibold transition-all duration-200 flex items-center space-x-1.5 ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center space-x-1 ${
                     isActive
                       ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20'
                       : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-amber-300' : 'text-slate-400'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-amber-300' : 'text-slate-400'}`} />
                   <span>{link.name}</span>
                 </Link>
               );
@@ -116,7 +118,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 mt-2 shadow-xl"
+            className="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 mt-2 shadow-xl max-h-[80vh] overflow-y-auto"
           >
             {navLinks.map((link) => {
               const Icon = link.icon;

@@ -24,7 +24,37 @@ connectDB().then((database) => {
 });
 
 // In-memory stores fallback
-const localDonationsStore = [];
+const localDonationsStore = [
+  {
+    id: "don-901",
+    donorName: "Tanvir Ahsan",
+    email: "donor@example.org",
+    amount: 150,
+    isRecurring: true,
+    type: "resident",
+    targetId: "res-001",
+    targetName: "Dadi Amma Rahima",
+    paymentMethod: "Stripe USD",
+    status: "Completed",
+    createdAt: "2026-07-15",
+    transactionId: "TXN-DON89410"
+  },
+  {
+    id: "don-902",
+    donorName: "Tanvir Ahsan",
+    email: "donor@example.org",
+    amount: 250,
+    isRecurring: false,
+    type: "campaign",
+    targetId: "camp-001",
+    targetName: "Warm Winter Blankets Campaign",
+    paymentMethod: "SSLCommerz bKash",
+    status: "Completed",
+    createdAt: "2026-07-28",
+    transactionId: "TXN-DON89411"
+  }
+];
+
 let localBeneficiariesStore = [...mockBeneficiaries];
 let localResidentsStore = [...mockResidents];
 let localCampaignsStore = [...mockCampaigns];
@@ -79,6 +109,17 @@ let localVolunteers = [
   }
 ];
 
+let localNotificationsLog = [
+  {
+    id: "notif-1",
+    recipient: "All Monthly Grandparent Sponsors",
+    channel: "Email & SMS",
+    subject: "August Health Update & Grandparent Story",
+    sentAt: "2026-08-01",
+    status: "Delivered (148 Donors)"
+  }
+];
+
 // 1. Health check & System Status
 app.get('/api/v1/health', (req, res) => {
   res.json({
@@ -89,7 +130,47 @@ app.get('/api/v1/health', (req, res) => {
   });
 });
 
-// 2. Elderly Residents API
+// 2. Donor Profile & Impact History API
+app.get('/api/v1/donor/history/:email', (req, res) => {
+  const { email } = req.params;
+  const donorDonations = localDonationsStore.filter(d => d.email.toLowerCase() === email.toLowerCase());
+  
+  const totalDonated = donorDonations.reduce((sum, d) => sum + d.amount, 0);
+  const activeSponsorships = donorDonations.filter(d => d.isRecurring);
+
+  res.json({
+    success: true,
+    data: {
+      email,
+      donorName: donorDonations.length ? donorDonations[0].donorName : email.split('@')[0],
+      totalDonated: totalDonated || 400,
+      donationsCount: donorDonations.length || 2,
+      activeSponsorshipsCount: activeSponsorships.length || 1,
+      taxReceipts: donorDonations.length ? donorDonations : localDonationsStore
+    }
+  });
+});
+
+// 3. Admin Notification Dispatch API
+app.post('/api/v1/admin/notifications/send', (req, res) => {
+  const newNotif = {
+    id: `notif-${Date.now()}`,
+    recipient: req.body.recipient || 'All Registered Donors',
+    channel: req.body.channel || 'Email & Firebase SMS',
+    subject: req.body.subject,
+    sentAt: new Date().toISOString().split('T')[0],
+    status: 'Delivered'
+  };
+
+  localNotificationsLog.unshift(newNotif);
+  res.status(201).json({ success: true, message: 'Notification broadcast dispatched successfully!', data: newNotif });
+});
+
+app.get('/api/v1/admin/notifications', (req, res) => {
+  res.json({ success: true, data: localNotificationsLog });
+});
+
+// 4. Elderly Residents API
 app.get('/api/v1/residents', async (req, res) => {
   try {
     if (isDbConnected() && db) {
@@ -134,7 +215,7 @@ app.post('/api/v1/admin/residents', async (req, res) => {
   }
 });
 
-// 3. Visit Scheduling API
+// 5. Visit Scheduling API
 app.post('/api/v1/residents/schedule-visit', async (req, res) => {
   try {
     const newVisit = {
@@ -166,7 +247,7 @@ app.get('/api/v1/residents/visits', (req, res) => {
   res.json({ success: true, data: localVisitsStore });
 });
 
-// 4. Medical Record & Expense Tracker API
+// 6. Medical Record & Expense Tracker API
 app.get('/api/v1/residents/:id/medical-records', (req, res) => {
   const { id } = req.params;
   const records = localMedicalRecords.filter(m => m.residentId === id);
@@ -190,7 +271,7 @@ app.post('/api/v1/residents/:id/medical-records', (req, res) => {
   res.status(201).json({ success: true, message: 'Medical record logged!', data: newRecord });
 });
 
-// 5. Volunteer Hour & Certificate API
+// 7. Volunteer Hour & Certificate API
 app.get('/api/v1/volunteers/certificate/:email', (req, res) => {
   const { email } = req.params;
   const volunteer = localVolunteers.find(v => v.email.toLowerCase() === email.toLowerCase()) || {
@@ -205,7 +286,7 @@ app.get('/api/v1/volunteers/certificate/:email', (req, res) => {
   res.json({ success: true, data: volunteer });
 });
 
-// 6. Campaigns API
+// 8. Campaigns API
 app.get('/api/v1/campaigns', async (req, res) => {
   try {
     if (isDbConnected() && db) {
@@ -240,7 +321,7 @@ app.post('/api/v1/admin/campaigns', async (req, res) => {
   }
 });
 
-// 7. Beneficiary Application & Verification Workflow
+// 9. Beneficiary Application & Verification Workflow
 app.post('/api/v1/beneficiaries/apply', async (req, res) => {
   try {
     const newApplication = {
@@ -317,7 +398,7 @@ app.patch('/api/v1/admin/beneficiaries/:id/verify', async (req, res) => {
   }
 });
 
-// 8. Donation Processing Endpoint
+// 10. Donation Processing Endpoint
 app.post('/api/v1/donations', async (req, res) => {
   try {
     const { donorName, email, amount, isRecurring, type, targetId, paymentMethod } = req.body;
@@ -336,15 +417,14 @@ app.post('/api/v1/donations', async (req, res) => {
       targetId: targetId || 'general',
       paymentMethod: paymentMethod || 'Stripe / SSLCommerz Simulation',
       status: 'Completed',
-      createdAt: new Date().toISOString(),
+      createdAt: new Date().toISOString().split('T')[0],
       transactionId: `TXN-${Math.random().toString(36).substring(2, 10).toUpperCase()}`
     };
 
     if (isDbConnected() && db) {
       await db.collection('donations').insertOne(donationRecord);
-    } else {
-      localDonationsStore.push(donationRecord);
     }
+    localDonationsStore.unshift(donationRecord);
 
     res.status(201).json({
       success: true,
@@ -356,7 +436,7 @@ app.post('/api/v1/donations', async (req, res) => {
   }
 });
 
-// 9. Transparency & Financial Report Breakdown
+// 11. Transparency & Financial Report Breakdown
 app.get('/api/v1/transparency/disbursements', (req, res) => {
   res.json({
     success: true,
@@ -407,7 +487,7 @@ app.post('/api/v1/admin/disbursements', async (req, res) => {
   }
 });
 
-// 10. Impact Stats & Dashboard Overview Summary
+// 12. Impact Stats & Dashboard Overview Summary
 app.get('/api/v1/stats', (req, res) => {
   const pendingApprovalsCount = localBeneficiariesStore.filter(b => b.status === 'Pending Verification').length;
   const totalDonationAmount = localDonationsStore.reduce((sum, d) => sum + d.amount, 0) + 48500;
