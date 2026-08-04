@@ -506,6 +506,19 @@ app.get('/api/v1/stats', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`[Server] Elderly Care & Charity Backend API listening on http://localhost:${PORT}`);
 });
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    const ALT_PORT = Number(PORT) + 1;
+    console.warn(`[Server] Port ${PORT} is busy. Switching automatically to http://localhost:${ALT_PORT}`);
+    app.listen(ALT_PORT, () => {
+      console.log(`[Server] Elderly Care & Charity Backend API listening on http://localhost:${ALT_PORT}`);
+    });
+  } else {
+    console.error('[Server Error]', err);
+  }
+});
+
