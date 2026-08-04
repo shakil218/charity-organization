@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   title: "Elderly Care & Charity Foundation Platform | Dignity & Transparent Aid",
   description: "Providing dignified care for elderly residents and connecting generous donors with verified underprivileged beneficiaries through transparent impact reporting.",
   keywords: ["Elderly Care", "Charity Platform", "Sponsor Grandparents", "Verified Donations", "Transparent NGO", "Winter Aid"],
+  manifest: "/manifest.json",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#046a38",
 };
 
 export default function RootLayout({
