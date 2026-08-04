@@ -29,6 +29,44 @@ let localBeneficiariesStore = [...mockBeneficiaries];
 let localResidentsStore = [...mockResidents];
 let localCampaignsStore = [...mockCampaigns];
 let localDisbursementsStore = [...mockDisbursements];
+let localVisitsStore = [
+  {
+    id: "v-101",
+    residentId: "res-001",
+    residentName: "Dadi Amma Rahima",
+    visitorName: "Sultana Parveen",
+    visitorEmail: "sultana@example.com",
+    visitorPhone: "+880 1711-223344",
+    visitDate: "2026-08-10",
+    timeSlot: "10:00 AM - 12:00 PM",
+    purpose: "Reading storybooks & garden walk",
+    visitorType: "Volunteer Visitor",
+    status: "Confirmed"
+  }
+];
+
+let localMedicalRecords = [
+  {
+    id: "med-1",
+    residentId: "res-001",
+    date: "2026-07-28",
+    title: "Monthly Hypertension & Joint Medicine Batch",
+    cost: 45,
+    doctor: "Dr. Anisur Rahman",
+    notes: "Amlodipine 5mg & Osteo-joint supplements provided for August.",
+    receiptUrl: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: "med-2",
+    residentId: "res-002",
+    date: "2026-07-15",
+    title: "Cataract Pre-Surgery Ophthalmic Checkup",
+    cost: 85,
+    doctor: "Dr. Farhana Yasmin",
+    notes: "Eye pressure normal. Surgery scheduled for next month.",
+    receiptUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80"
+  }
+];
 
 // 1. Health check & System Status
 app.get('/api/v1/health', (req, res) => {
@@ -85,7 +123,63 @@ app.post('/api/v1/admin/residents', async (req, res) => {
   }
 });
 
-// 3. Campaigns API
+// 3. Visit Scheduling API
+app.post('/api/v1/residents/schedule-visit', async (req, res) => {
+  try {
+    const newVisit = {
+      id: `v-${Date.now()}`,
+      residentId: req.body.residentId,
+      residentName: req.body.residentName || 'Elderly Resident',
+      visitorName: req.body.visitorName,
+      visitorEmail: req.body.visitorEmail,
+      visitorPhone: req.body.visitorPhone,
+      visitDate: req.body.visitDate,
+      timeSlot: req.body.timeSlot || '10:00 AM - 12:00 PM',
+      purpose: req.body.purpose,
+      visitorType: req.body.visitorType || 'Volunteer',
+      status: 'Confirmed'
+    };
+
+    localVisitsStore.unshift(newVisit);
+    if (isDbConnected() && db) {
+      await db.collection('visits').insertOne(newVisit);
+    }
+
+    res.status(201).json({ success: true, message: 'Visit scheduled successfully!', data: newVisit });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/v1/residents/visits', (req, res) => {
+  res.json({ success: true, data: localVisitsStore });
+});
+
+// 4. Medical Record & Expense Tracker API
+app.get('/api/v1/residents/:id/medical-records', (req, res) => {
+  const { id } = req.params;
+  const records = localMedicalRecords.filter(m => m.residentId === id);
+  res.json({ success: true, data: records });
+});
+
+app.post('/api/v1/residents/:id/medical-records', (req, res) => {
+  const { id } = req.params;
+  const newRecord = {
+    id: `med-${Date.now()}`,
+    residentId: id,
+    date: new Date().toISOString().split('T')[0],
+    title: req.body.title,
+    cost: Number(req.body.cost) || 0,
+    doctor: req.body.doctor || 'Attending Physician',
+    notes: req.body.notes,
+    receiptUrl: req.body.receiptUrl || 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80'
+  };
+
+  localMedicalRecords.unshift(newRecord);
+  res.status(201).json({ success: true, message: 'Medical record logged!', data: newRecord });
+});
+
+// 5. Campaigns API
 app.get('/api/v1/campaigns', async (req, res) => {
   try {
     if (isDbConnected() && db) {
@@ -120,7 +214,7 @@ app.post('/api/v1/admin/campaigns', async (req, res) => {
   }
 });
 
-// 4. Beneficiary Application & Verification Workflow
+// 6. Beneficiary Application & Verification Workflow
 app.post('/api/v1/beneficiaries/apply', async (req, res) => {
   try {
     const newApplication = {
@@ -197,7 +291,7 @@ app.patch('/api/v1/admin/beneficiaries/:id/verify', async (req, res) => {
   }
 });
 
-// 5. Donation Processing Endpoint
+// 7. Donation Processing Endpoint
 app.post('/api/v1/donations', async (req, res) => {
   try {
     const { donorName, email, amount, isRecurring, type, targetId, paymentMethod } = req.body;
@@ -236,7 +330,7 @@ app.post('/api/v1/donations', async (req, res) => {
   }
 });
 
-// 6. Transparency & Disbursements
+// 8. Transparency & Disbursements
 app.get('/api/v1/transparency/disbursements', (req, res) => {
   res.json({
     success: true,
@@ -269,7 +363,7 @@ app.post('/api/v1/admin/disbursements', async (req, res) => {
   }
 });
 
-// 7. Impact Stats & Dashboard Overview Summary
+// 9. Impact Stats & Dashboard Overview Summary
 app.get('/api/v1/stats', (req, res) => {
   const pendingApprovalsCount = localBeneficiariesStore.filter(b => b.status === 'Pending Verification').length;
   const totalDonationAmount = localDonationsStore.reduce((sum, d) => sum + d.amount, 0) + 48500;
@@ -282,7 +376,8 @@ app.get('/api/v1/stats', (req, res) => {
       totalFundsRaised: totalDonationAmount,
       pendingBeneficiariesCount: pendingApprovalsCount,
       transparencyScore: '100% Verified',
-      activeCampaignsCount: localCampaignsStore.length
+      activeCampaignsCount: localCampaignsStore.length,
+      scheduledVisitsCount: localVisitsStore.length
     }
   });
 });

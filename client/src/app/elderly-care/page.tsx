@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Search, Filter, Stethoscope, Calendar, AlertCircle, CheckCircle, ShieldCheck, ArrowRight, X } from 'lucide-react';
+import { Heart, Search, Filter, Stethoscope, Calendar, AlertCircle, CheckCircle, ShieldCheck, ArrowRight, X, Clock, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface Resident {
@@ -128,8 +129,8 @@ export default function ElderlyCarePage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
       
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden">
-        <div className="max-w-3xl space-y-4 relative z-10">
+      <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <div className="max-w-2xl space-y-4 relative z-10">
           <div className="inline-flex items-center space-x-2 bg-emerald-700/80 px-3.5 py-1.5 rounded-full text-amber-300 text-xs font-bold uppercase tracking-wider">
             <Heart className="w-4 h-4 fill-amber-300" />
             <span>Sponsor a Grandparent</span>
@@ -137,9 +138,28 @@ export default function ElderlyCarePage() {
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
             Elderly Care Wing & Resident Sponsorship
           </h1>
-          <p className="text-emerald-100 text-base sm:text-lg leading-relaxed">
-            Every senior deserves food, warm shelter, medical dignity, and emotional warmth. Become a monthly sponsor and directly cover their living and medical needs.
+          <p className="text-emerald-100 text-base leading-relaxed">
+            Every senior deserves food, warm shelter, medical dignity, and emotional warmth. Become a monthly sponsor or schedule a visit today.
           </p>
+        </div>
+
+        {/* Quick Action Buttons */}
+        <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0 relative z-10">
+          <Link
+            href="/elderly-care/schedule-visit"
+            className="px-6 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs flex items-center justify-center space-x-2 shadow-lg transition-colors"
+          >
+            <Calendar className="w-4 h-4" />
+            <span>Schedule a Visit Slot</span>
+          </Link>
+
+          <Link
+            href="/elderly-care/medical-tracker"
+            className="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold text-xs flex items-center justify-center space-x-2 backdrop-blur-sm transition-colors"
+          >
+            <Stethoscope className="w-4 h-4 text-emerald-400" />
+            <span>Medical Expense Ledger</span>
+          </Link>
         </div>
       </div>
 
@@ -245,18 +265,25 @@ export default function ElderlyCarePage() {
               </div>
 
               {/* Action Button */}
-              <div className="p-6 pt-0">
+              <div className="p-6 pt-0 flex space-x-2">
                 <button
                   onClick={() => setSelectedResident(resident)}
-                  className={`w-full py-3 rounded-2xl font-bold text-sm transition-all flex items-center justify-center space-x-2 shadow-md ${
+                  className={`flex-1 py-3 rounded-2xl font-bold text-xs transition-all flex items-center justify-center space-x-1.5 shadow-md ${
                     resident.status === 'Fully Sponsored'
                       ? 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                       : 'bg-emerald-700 hover:bg-emerald-800 text-white shadow-emerald-700/20'
                   }`}
                 >
-                  <Heart className="w-4 h-4 fill-amber-300 text-amber-300" />
-                  <span>{resident.status === 'Fully Sponsored' ? 'Support Medical Care' : 'Sponsor Monthly'}</span>
+                  <Heart className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
+                  <span>{resident.status === 'Fully Sponsored' ? 'Support Medical' : 'Sponsor Monthly'}</span>
                 </button>
+
+                <Link
+                  href={`/elderly-care/schedule-visit`}
+                  className="px-4 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center"
+                >
+                  <Calendar className="w-4 h-4" />
+                </Link>
               </div>
             </motion.div>
           );
