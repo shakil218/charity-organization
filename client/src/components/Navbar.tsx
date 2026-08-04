@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Home, Users, Gift, ShieldCheck, Menu, X, PhoneCall } from 'lucide-react';
+import { Heart, Home, Users, Gift, ShieldCheck, Menu, X, HandHeart, UserCheck, LayoutDashboard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function Navbar() {
@@ -28,7 +28,8 @@ export function Navbar() {
     { name: 'Elderly Care Wing', href: '/elderly-care', icon: Heart },
     { name: 'Causes & Campaigns', href: '/campaigns', icon: Gift },
     { name: 'Trust & Transparency', href: '/transparency', icon: ShieldCheck },
-    { name: 'Volunteer', href: '/volunteer', icon: Users },
+    { name: 'Apply for Aid', href: '/beneficiary/apply', icon: HandHeart },
+    { name: 'Admin', href: '/admin', icon: LayoutDashboard },
   ];
 
   return (
@@ -57,7 +58,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-white/60 p-1.5 rounded-full border border-slate-200/80 shadow-sm backdrop-blur-sm">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5 bg-white/60 p-1.5 rounded-full border border-slate-200/80 shadow-sm backdrop-blur-sm">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -65,7 +66,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs lg:text-sm font-semibold transition-all duration-200 flex items-center space-x-1.5 ${
                     isActive
                       ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20'
                       : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'

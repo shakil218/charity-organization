@@ -111,3 +111,33 @@ export const mockDisbursements = [
     status: "Verified & Delivered"
   }
 ];
+
+export const mockBeneficiaries = [
+  {
+    id: "ben-501",
+    fullName: "Kulsum Bibi",
+    nidOrId: "NID-1984729104",
+    phone: "+880 1812-345678",
+    address: "Kurigram Rural District, Block B",
+    category: "Winter Clothing Aid",
+    amountRequested: 180,
+    reason: "Widowed mother of 3 children. Facing intense cold wave with no warm blankets or jackets.",
+    status: "Pending Verification",
+    submittedAt: "2026-08-01",
+    verificationBadge: "Unverified"
+  },
+  {
+    id: "ben-502",
+    fullName: "Kamal Hossain",
+    nidOrId: "NID-1976204812",
+    phone: "+880 1711-987654",
+    address: "Rangpur Village 4",
+    category: "Emergency Medical Procedure",
+    amountRequested: 450,
+    reason: "Requires urgent orthopedic leg brace following an agricultural accident.",
+    status: "Verified & Approved",
+    submittedAt: "2026-07-28",
+    verificationBadge: "Field KYC Verified"
+  }
+];
+
