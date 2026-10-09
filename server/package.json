@@ -1,13 +1,11 @@
 {
-  "name": "elderly-care-charity-server",
+  "name": "sorc-server",
   "version": "1.0.0",
-  "description": "Backend REST API for Elderly Care & Charity Foundation Platform",
+  "description": "Backend API Server for Sonavan Old Rehabilitation Center (SORC)",
   "main": "src/server.js",
-  "type": "module",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node --watch src/server.js",
-    "seed": "node src/db/seed.js"
+    "dev": "node --watch src/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

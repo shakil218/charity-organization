@@ -1,97 +1,95 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --bg-main: #fbf9f6;
-    --fg-main: #0f172a;
-    --primary: #046a38;
-    --primary-hover: #03522b;
-    --primary-glow: rgba(4, 106, 56, 0.25);
-    --secondary: #d97706;
-    --secondary-glow: rgba(217, 119, 6, 0.25);
-    --accent: #991b1b;
-    --card-bg: #ffffff;
-    --border-color: rgba(226, 232, 240, 0.8);
-  }
-
-  body {
-    background-color: var(--bg-main);
-    color: var(--fg-main);
-    font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-  }
+:root {
+  --background: #FAF8F2;
+  --foreground: #242B29;
+  
+  --primary-teal: #145B52;
+  --primary-teal-dark: #0E423B;
+  --primary-teal-light: #1D7B70;
+  
+  --forest-green: #276749;
+  --forest-green-light: #358660;
+  
+  --warm-cream: #FAF8F2;
+  --warm-cream-accent: #F2ECE0;
+  --warm-cream-dark: #E6DCCB;
+  
+  --soft-gold: #D6B56D;
+  --soft-gold-hover: #C5A154;
+  --soft-gold-light: #F7EFCF;
 }
 
-/* Modern Glassmorphism & Neon Glow Tokens */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-teal-primary: var(--primary-teal);
+  --color-teal-dark: var(--primary-teal-dark);
+  --color-forest: var(--forest-green);
+  --color-cream: var(--warm-cream);
+  --color-cream-accent: var(--warm-cream-accent);
+  --color-gold: var(--soft-gold);
+
+  --font-inter: var(--font-inter), sans-serif;
+  --font-hind: var(--font-hind-siliguri), sans-serif;
 }
 
-.glass-panel-dark {
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(51, 65, 85, 0.5);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+html {
+  scroll-behavior: smooth;
 }
 
-/* Radiant Hero Background Gradient */
-.hero-gradient-modern {
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(4, 106, 56, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(217, 119, 6, 0.1) 0%, transparent 40%),
-    linear-gradient(180deg, rgba(251, 249, 246, 0.4) 0%, rgba(251, 249, 246, 1) 100%);
+body {
+  background-color: #FAF8F2;
+  color: #242B29;
+  font-family: var(--font-inter);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Card Hover Micro-Interactions */
-.card-hover-modern {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+body[data-lang="bn"] {
+  font-family: var(--font-hind);
 }
 
-.card-hover-modern:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 25px 35px -10px rgba(4, 106, 56, 0.08), 0 15px 15px -10px rgba(0, 0, 0, 0.03);
+/* Glassmorphism & Soft Card Elevation */
+.sorc-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(36, 43, 41, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(20, 91, 82, 0.05);
 }
 
-/* Shimmer Button Effect */
-.shimmer-btn {
-  position: relative;
-  overflow: hidden;
+.bg-sorc-primary {
+  background-color: #145B52;
 }
 
-.shimmer-btn::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    60deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.25) 50%,
-    transparent 70%
-  );
-  transform: rotate(30deg);
-  transition: all 0.6s ease;
-  opacity: 0;
+.text-sorc-primary {
+  color: #145B52;
 }
 
-.shimmer-btn:hover::after {
-  left: 100%;
-  opacity: 1;
+.bg-sorc-secondary {
+  background-color: #276749;
 }
 
-/* Glow Aura Utility */
-.glow-emerald {
-  box-shadow: 0 0 30px rgba(4, 106, 56, 0.25);
+.bg-sorc-accent {
+  background-color: #D6B56D;
 }
 
-.glow-amber {
-  box-shadow: 0 0 30px rgba(217, 119, 6, 0.25);
+.text-sorc-accent {
+  color: #D6B56D;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F2ECE0;
+}
+::-webkit-scrollbar-thumb {
+  background: #145B52;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0E423B;
 }
