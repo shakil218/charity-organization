@@ -119,7 +119,7 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
     <section
       id={id}
       aria-label="Organization Overview"
-      className={`relative w-full py-16 sm:py-20 lg:py-24 bg-[#FAF8F2] overflow-hidden scroll-mt-28 ${className}`}
+      className={`relative w-full py-12 sm:py-16 lg:py-20 bg-[#FAF8F2] overflow-hidden scroll-mt-24 ${className}`}
     >
       {/* Background Subtle Accent Glows */}
       <div 

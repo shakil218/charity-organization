@@ -98,7 +98,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
         aria-hidden="true" 
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-18 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14 relative z-10">
         
         {/* Breadcrumb Navigation */}
         {showBreadcrumbs && (

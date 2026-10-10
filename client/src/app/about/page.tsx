@@ -31,7 +31,7 @@ export default function AboutPage() {
   const isBn = locale === 'bn';
 
   return (
-    <div className="space-y-16 pb-16">
+    <div className="flex flex-col">
       
       {/* Full-width Premium Hero Section (Animates on load and re-animates on scroll) */}
       <AboutHeroSection />
@@ -40,7 +40,7 @@ export default function AboutPage() {
       <OrganizationOverviewSection id="organization-overview" />
 
       {/* Core Care Pillars & Facilities (Animates every time on scroll down) */}
-      <section id="services-section" className="bg-[#F2ECE0]/60 py-16 sm:py-20 border-y border-teal-900/10 scroll-mt-24">
+      <section id="services-section" className="bg-[#F2ECE0]/60 py-12 sm:py-16 border-y border-teal-900/10 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
           <motion.div 
