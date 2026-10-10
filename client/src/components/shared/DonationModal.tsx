@@ -29,6 +29,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [receiptId, setReceiptId] = useState('');
 
   if (!isOpen) return null;
 
@@ -60,6 +61,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
 
       const data = await res.json();
       setLoading(false);
+      setReceiptId(data?.donation?.transactionId || `SORC-REC-${Date.now()}`);
 
       if (data.success || res.ok) {
         setSuccess(true);
@@ -81,6 +83,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
     } catch {
       // In offline/demo mode, proceed gracefully with success state
       setLoading(false);
+      setReceiptId(`SORC-REC-${Date.now()}`);
       setSuccess(true);
       confetti({
         particleCount: 100,
@@ -92,6 +95,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
 
   const handleReset = () => {
     setSuccess(false);
+    setReceiptId('');
     onClose();
   };
 
@@ -140,7 +144,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
               <div className="p-4 rounded-xl bg-[#F4EFE6] border border-amber-200 text-left text-xs space-y-1 text-gray-800">
                 <p><strong>{locale === 'bn' ? 'অনুদানের পরিমাণ:' : 'Amount:'}</strong> ৳ {amount} BDT ({frequency})</p>
                 <p><strong>{locale === 'bn' ? 'পেমেন্ট স্ট্যাটাস:' : 'Payment Status:'}</strong> Completed / Verified</p>
-                <p><strong>{locale === 'bn' ? 'রসিদ ট্র্যাকিং ID:' : 'Receipt Tracking ID:'}</strong> SORC-REC-{Date.now()}</p>
+                <p><strong>{locale === 'bn' ? 'রসিদ ট্র্যাকিং ID:' : 'Receipt Tracking ID:'}</strong> {receiptId || 'SORC-REC-VERIFIED'}</p>
               </div>
               <button
                 onClick={handleReset}

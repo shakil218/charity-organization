@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useSyncExternalStore } from 'react';
 import { Locale, translations, TranslationContent } from '../i18n/translations';
 
 interface LanguageContextType {
@@ -12,27 +12,35 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+function subscribe(callback: () => void) {
+  window.addEventListener('storage', callback);
+  window.addEventListener('sorc_locale_change', callback);
+  return () => {
+    window.removeEventListener('storage', callback);
+    window.removeEventListener('sorc_locale_change', callback);
+  };
+}
+
+function getSnapshot(): Locale {
+  const savedLocale = localStorage.getItem('sorc_locale');
+  return savedLocale === 'en' || savedLocale === 'bn' ? savedLocale : 'bn';
+}
+
+function getServerSnapshot(): Locale {
+  return 'bn';
+}
+
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [locale, setLocaleState] = useState<Locale>('bn'); // Default to Bangla for Bengali nonprofit identity
+  const locale = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    // Check saved language preference in localStorage
-    const savedLocale = localStorage.getItem('sorc_locale') as Locale;
-    if (savedLocale && (savedLocale === 'en' || savedLocale === 'bn')) {
-      setLocaleState(savedLocale);
-      document.body.setAttribute('data-lang', savedLocale);
-      document.documentElement.lang = savedLocale;
-    } else {
-      document.body.setAttribute('data-lang', 'bn');
-      document.documentElement.lang = 'bn';
-    }
-  }, []);
+    document.body.setAttribute('data-lang', locale);
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   const setLocale = (newLocale: Locale) => {
-    setLocaleState(newLocale);
     localStorage.setItem('sorc_locale', newLocale);
-    document.body.setAttribute('data-lang', newLocale);
-    document.documentElement.lang = newLocale;
+    window.dispatchEvent(new Event('sorc_locale_change'));
   };
 
   const toggleLocale = () => {

@@ -4,89 +4,86 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
-import { ShieldCheck, Heart, Building } from 'lucide-react';
+import {
+  WhyChooseUsContent,
+  WhyChooseUsImage,
+  defaultBenefits,
+  type WhyChooseUsSectionProps
+} from './why-choose-us';
 
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+// Motion animation variants adhering to the project standard
+const fadeInLeft: Variants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05
-    }
-  }
+const fadeInRight: Variants = {
+  hidden: { opacity: 0, x: 30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
-export const WhyChooseUsSection: React.FC = () => {
+/**
+ * Why Choose Us Section
+ * An elegant two-column layout presenting organizational principles:
+ * - Left: "Care That Begins With Respect." heading, principled intro, and four benefits
+ * - Right: authentic photograph of elder companionship with decorative teal & gold accents
+ * - Fully responsive (1 col on mobile, 2 cols on tablet & desktop)
+ */
+export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
+  heading,
+  introduction,
+  imageSrc,
+  className = ''
+}) => {
   const { locale } = useLanguage();
   const scrollDirection = useScrollDirection();
   const isScrollingUp = scrollDirection === 'up';
 
   return (
-    <motion.section
-      initial="hidden"
-      animate={isScrollingUp ? 'visible' : undefined}
-      whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }}
-      variants={fadeInUp}
-      className="bg-[#F2ECE0]/60 py-16 border-y border-teal-900/10"
+    <section
+      aria-label={locale === 'bn' ? 'কেন আমরা দায়বদ্ধ' : 'Care That Begins With Respect'}
+      className={`relative py-12 sm:py-16 lg:py-20 bg-[#FAF8F2] overflow-hidden ${className}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      {/* Ambient background accents matching design system */}
+      <div className="absolute top-1/3 left-0 -translate-y-1/2 w-96 h-96 bg-[#276749]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-10 right-0 w-80 h-80 bg-[#D6B56D]/10 rounded-full blur-2xl pointer-events-none" />
 
-        <div className="text-center max-w-2xl mx-auto space-y-2">
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-[#145B52]">
-            {locale === 'bn' ? 'কেন সোনাভান কেন্দ্র নির্ভরযোগ্য?' : 'Why Choose Sonavan Rehabilitation Center'}
-          </h2>
-          <p className="text-sm text-[#242B29]/70">
-            {locale === 'bn' ? 'আমরা কেবল প্রতিশ্রুতি দিই না, প্রতিটি খরচের অডিট ও ছবি অনলাইনে প্রকাশ করি।' : 'Building lasting trust through complete public transparency, verified medical care, and continuous audits.'}
-          </p>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-10 md:gap-8 lg:gap-12 xl:gap-16 items-center">
+
+          {/* Left Column: Heading, Introduction & Four Benefits */}
+          <motion.div
+            initial="hidden"
+            animate={isScrollingUp ? 'visible' : undefined}
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={fadeInLeft}
+            className="md:col-span-7 lg:col-span-7"
+          >
+            <WhyChooseUsContent
+              heading={heading}
+              introduction={introduction}
+              benefits={defaultBenefits}
+            />
+          </motion.div>
+
+          {/* Right Column: Warm Authentic Photograph with Teal & Gold Accents */}
+          <motion.div
+            initial="hidden"
+            animate={isScrollingUp ? 'visible' : undefined}
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={fadeInRight}
+            className="md:col-span-5 lg:col-span-5"
+          >
+            <WhyChooseUsImage imageSrc={imageSrc} />
+          </motion.div>
+
         </div>
-
-        <motion.div
-          initial="hidden"
-          animate={isScrollingUp ? 'visible' : undefined}
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          <motion.div variants={fadeInUp} whileHover={{ y: -5 }} className="bg-white p-8 rounded-3xl border border-amber-200/80 shadow-sm space-y-3 hover:shadow-md transition">
-            <ShieldCheck className="w-8 h-8 text-[#145B52]" />
-            <h3 className="text-lg font-bold text-[#145B52]">
-              {locale === 'bn' ? '১০০% অডিটকৃত পাবলিক লেজার' : '100% Audited Public Ledger'}
-            </h3>
-            <p className="text-xs text-[#242B29]/75 leading-relaxed">
-              {locale === 'bn' ? 'প্রতিটি কেনাকাটার ভাউচার ও রসিদ ওয়েবসাইটে সকলের জন্য উন্মুক্ত।' : 'Every purchase receipt and medical expenditure voucher is publicly accessible.'}
-            </p>
-          </motion.div>
-
-          <motion.div variants={fadeInUp} whileHover={{ y: -5 }} className="bg-white p-8 rounded-3xl border border-amber-200/80 shadow-sm space-y-3 hover:shadow-md transition">
-            <Heart className="w-8 h-8 text-[#145B52]" />
-            <h3 className="text-lg font-bold text-[#145B52]">
-              {locale === 'bn' ? 'নিবেদিত প্রবীণ সেবিকা' : 'Dedicated Geriatric Nursing'}
-            </h3>
-            <p className="text-xs text-[#242B29]/75 leading-relaxed">
-              {locale === 'bn' ? 'অভিজ্ঞ সেবিকা ও চিকিৎসকের সার্বক্ষণিক নিবিড় পরিচর্যা।' : 'Trained nurses and physical therapists ensuring continuous health care.'}
-            </p>
-          </motion.div>
-
-          <motion.div variants={fadeInUp} whileHover={{ y: -5 }} className="bg-white p-8 rounded-3xl border border-amber-200/80 shadow-sm space-y-3 hover:shadow-md transition">
-            <Building className="w-8 h-8 text-[#145B52]" />
-            <h3 className="text-lg font-bold text-[#145B52]">
-              {locale === 'bn' ? 'সবুজ স্বাস্থ্যকর ক্যাম্পাস' : 'Tranquil Green Campus'}
-            </h3>
-            <p className="text-xs text-[#242B29]/75 leading-relaxed">
-              {locale === 'bn' ? 'কোলাহলমুক্ত প্রকৃতি ও উন্মুক্ত বাগানে নিয়মিত হাঁটার সুব্যবস্থা।' : 'Peaceful natural environment supporting fresh air and healthy morning walks.'}
-            </p>
-          </motion.div>
-        </motion.div>
-
       </div>
-    </motion.section>
+    </section>
   );
 };
+
+// Re-export subcomponents and types for clean modular consumption
+export * from './why-choose-us';

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Heart, ShieldCheck, CreditCard, Lock, Award } from 'lucide-react';
+import { Heart, CreditCard, Lock, Award } from 'lucide-react';
 
 interface PageProps {
   onOpenDonateModal?: (residentName?: string, residentId?: string) => void;

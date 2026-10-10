@@ -1,18 +1,18 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
-import { useLanguage } from '@/context/LanguageContext';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
-import { Heart, Users, Building } from 'lucide-react';
-
-interface GetInvolvedSectionProps {
-  onOpenDonateModal?: () => void;
-}
+import {
+  GetInvolvedHeader,
+  GetInvolvedCard,
+  GetInvolvedNotice,
+  defaultGetInvolvedCards,
+  type GetInvolvedSectionProps
+} from './get-involved';
 
 const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
 };
 
@@ -21,97 +21,77 @@ const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05
+      staggerChildren: 0.12,
+      delayChildren: 0.08
     }
   }
 };
 
-export const GetInvolvedSection: React.FC<GetInvolvedSectionProps> = ({ onOpenDonateModal }) => {
-  const { locale, t } = useLanguage();
+/**
+ * Get Involved Section for Sonavan Old Rehabilitation Center.
+ * Features:
+ * - Heading: "Together, We Can Make a Difference."
+ * - Description: "Explore meaningful ways to support older adults and contribute to a caring community."
+ * - 3 visually distinct cards:
+ *   1. Donate — Support the organization's approved programs (/donate).
+ *   2. Volunteer — Offer time, skills, or companionship through approved opportunities (/get-involved).
+ *   3. Partner With Us — Explore community or organizational collaboration (/contact).
+ * - Warm cream background, teal headings, forest-green accents, subtle gold details.
+ * - Gentle hover animations and accessible focus states.
+ * - Truthfulness assurance: does not claim tax deductibility or immediate specific vacancies.
+ * - Full responsive layout (1 col mobile, 3 cols md/lg) and bilingual Bangla & English support.
+ */
+export const GetInvolvedSection: React.FC<GetInvolvedSectionProps> = ({
+  heading,
+  description,
+  cards = defaultGetInvolvedCards,
+  onOpenDonateModal,
+  className = ''
+}) => {
   const scrollDirection = useScrollDirection();
   const isScrollingUp = scrollDirection === 'up';
 
   return (
     <motion.section
+      id="get-involved-section"
       initial="hidden"
       animate={isScrollingUp ? 'visible' : undefined}
       whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: false, amount: 0.15 }}
       variants={fadeInUp}
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8"
+      aria-label="Together, We Can Make a Difference"
+      className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 ${className}`}
     >
-      <div className="text-center max-w-2xl mx-auto space-y-2">
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-[#145B52]">
-          {t.getInvolvedPage.title}
-        </h2>
-        <p className="text-sm text-[#242B29]/70">
-          {t.getInvolvedPage.subtitle}
-        </p>
-      </div>
+      {/* Centered Section Header */}
+      <GetInvolvedHeader heading={heading} description={description} />
 
+      {/* 3 Visually Distinct Cards Grid (1 col on mobile, 3 cols on md/lg) */}
       <motion.div
         initial="hidden"
         animate={isScrollingUp ? 'visible' : undefined}
         whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: false, amount: 0.15 }}
         variants={staggerContainer}
-        className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 items-stretch"
       >
-        <motion.div variants={fadeInUp} whileHover={{ y: -8 }} className="bg-white p-8 rounded-3xl border border-teal-900/10 shadow-sm space-y-4 hover:shadow-xl transition-all">
-          <Heart className="w-8 h-8 text-[#145B52]" />
-          <h3 className="text-xl font-bold text-[#145B52]">
-            {locale === 'bn' ? 'অনুদানে সাহায্য' : 'Make a Donation'}
-          </h3>
-          <p className="text-xs text-[#242B29]/75 leading-relaxed">
-            {locale === 'bn' ? 'একজন প্রবীণের মাসিক চিকিৎসা ও পুষ্টিকর খাবারের স্পন্সর হোন।' : 'Sponsor monthly doctor fees, medicines, and specialized organic meals.'}
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => onOpenDonateModal?.()}
-            className="w-full py-2.5 rounded-xl bg-[#145B52] text-white text-xs font-bold shadow-md hover:bg-[#0E423B] transition cursor-pointer"
+        {cards.map((card) => (
+          <motion.div
+            key={card.id}
+            variants={fadeInUp}
+            whileHover={{ y: -6 }}
+            transition={{ duration: 0.25 }}
+            className="h-full"
           >
-            {t.nav.donate}
-          </motion.button>
-        </motion.div>
-
-        <motion.div variants={fadeInUp} whileHover={{ y: -8 }} className="bg-white p-8 rounded-3xl border border-teal-900/10 shadow-sm space-y-4 hover:shadow-xl transition-all">
-          <Users className="w-8 h-8 text-[#145B52]" />
-          <h3 className="text-xl font-bold text-[#145B52]">
-            {locale === 'bn' ? 'স্বেচ্ছাসেবক হোন' : 'Become a Volunteer'}
-          </h3>
-          <p className="text-xs text-[#242B29]/75 leading-relaxed">
-            {locale === 'bn' ? 'আপনার সময় ও দক্ষতা প্রবীণদের আনন্দময় দিন উপহার দিতে ব্যয় করুন।' : 'Offer companionship, medical care assistance, or social outreach support.'}
-          </p>
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Link
-              href="/volunteer"
-              className="block text-center py-2.5 rounded-xl bg-[#276749] text-white text-xs font-bold shadow-md hover:bg-[#1E4D2B] transition"
-            >
-              {t.volunteerPage.submitBtn}
-            </Link>
+            <GetInvolvedCard card={card} onOpenDonateModal={onOpenDonateModal} />
           </motion.div>
-        </motion.div>
-
-        <motion.div variants={fadeInUp} whileHover={{ y: -8 }} className="bg-[#FAF8F2] p-8 rounded-3xl border border-teal-900/10 shadow-sm space-y-4 hover:shadow-xl transition-all">
-          <Building className="w-8 h-8 text-[#145B52]" />
-          <h3 className="text-xl font-bold text-[#145B52]">
-            {locale === 'bn' ? 'প্রাতিষ্ঠানিক অংশীদারিত্ব' : 'CSR Partnerships'}
-          </h3>
-          <p className="text-xs text-[#242B29]/75 leading-relaxed">
-            {locale === 'bn' ? 'করপোরেট সিএসআর অনুদানের মাধ্যমে ক্লিনিক ও বাসস্থান সম্প্রসারণ করুন।' : 'Partner via corporate CSR programs to sponsor medical infrastructure.'}
-          </p>
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Link
-              href="/contact"
-              className="block text-center py-2.5 rounded-xl bg-white border border-gray-300 text-[#145B52] text-xs font-bold hover:bg-[#F2ECE0] transition"
-            >
-              {locale === 'bn' ? 'যোগাযোগ করুন' : 'Contact Partnerships'}
-            </Link>
-          </motion.div>
-        </motion.div>
+        ))}
       </motion.div>
+
+      {/* Prudence & Transparency Compliance Notice */}
+      <GetInvolvedNotice />
     </motion.section>
   );
 };
+
+// Re-export subcomponents, data, and types for clean external modular consumption
+export * from './get-involved';

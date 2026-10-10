@@ -2,14 +2,10 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { HeartHandshake, Users, Building, ArrowRight, ShieldCheck } from 'lucide-react';
+import { HeartHandshake, Users, Building, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-interface PageProps {
-  onOpenDonateModal?: () => void;
-}
-
-export default function GetInvolvedPage({ onOpenDonateModal }: PageProps) {
+export default function GetInvolvedPage() {
   const { locale, t } = useLanguage();
 
   return (

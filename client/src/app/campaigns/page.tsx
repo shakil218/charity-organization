@@ -3,14 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { CampaignCard, CampaignItem } from '@/components/shared/CampaignCard';
-import { Activity, Sparkles } from 'lucide-react';
+import { Activity } from 'lucide-react';
 
 interface PageProps {
   onOpenDonateModal?: (residentName?: string, residentId?: string) => void;
 }
 
 export default function CampaignsPage({ onOpenDonateModal }: PageProps) {
-  const { locale, t } = useLanguage();
+  const { t } = useLanguage();
 
   const [campaigns, setCampaigns] = useState<CampaignItem[]>([]);
   const [loading, setLoading] = useState(true);

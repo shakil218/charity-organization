@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Activity, Heart, Utensils, Smile, ShieldCheck, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import { Activity, Heart, Utensils, Smile, ShieldCheck } from 'lucide-react';
 
 interface PageProps {
   onOpenDonateModal?: () => void;
@@ -41,8 +40,14 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
       {/* Services Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {t.servicesPage.items.map((item, idx) => (
-            <div key={idx} className="bg-white p-8 rounded-3xl border border-teal-900/10 shadow-sm hover:shadow-md transition space-y-4">
+          {t.servicesPage.items.map((item, idx) => {
+            const anchorIds = ['elderly-support', 'rehabilitation-assistance', 'daily-living-support', 'social-engagement'];
+            return (
+              <div
+                key={idx}
+                id={anchorIds[idx]}
+                className="scroll-mt-24 bg-white p-8 rounded-3xl border border-teal-900/10 shadow-sm hover:shadow-md transition space-y-4"
+              >
               <div className="w-14 h-14 rounded-2xl bg-[#F2ECE0] flex items-center justify-center">
                 {iconMap[item.icon] || <Heart className="w-8 h-8 text-[#145B52]" />}
               </div>
@@ -53,7 +58,8 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
                 {item.desc}
               </p>
             </div>
-          ))}
+          );
+        })}
         </div>
       </section>
 

@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
-import { ShieldCheck, Heart, Users, Award, CheckCircle2, Sparkles, Building } from 'lucide-react';
+import { ShieldCheck, Heart, CheckCircle2, Sparkles, Building } from 'lucide-react';
 
 export default function AboutPage() {
   const { locale, t } = useLanguage();

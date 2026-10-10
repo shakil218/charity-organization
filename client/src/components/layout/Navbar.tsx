@@ -33,10 +33,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDonateModal }) => {
       <header className="sticky top-0 z-50 bg-[#FAF8F2]/95 backdrop-blur-md border-b border-teal-900/10 shadow-xs transition-shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
           
-          {/* Brand Logo & Name */}
           <Link 
             href="/" 
-            className="flex items-center gap-2.5 sm:gap-3 group shrink-0 focus:outline-none focus:ring-2 focus:ring-[#145B52] rounded-xl p-1"
+            className="flex items-center gap-2.5 sm:gap-3 group shrink-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 rounded-xl p-1"
           >
             {/* SORC Text Emblem Logo */}
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#145B52] border border-[#D6B56D]/40 text-[#FAF8F2] flex items-center justify-center font-black text-xs sm:text-sm tracking-wider shadow-md group-hover:scale-105 transition-transform duration-200 shrink-0">
@@ -73,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDonateModal }) => {
           </nav>
 
           {/* Right Action Items: Language Switcher & Prominent Donate Button */}
-          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
+          <div className="hidden xl:flex items-center gap-2.5 shrink-0">
             {/* Language Switcher */}
             <button
               onClick={toggleLocale}

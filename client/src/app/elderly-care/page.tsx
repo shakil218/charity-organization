@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { GrandparentCard, ResidentProfile } from '@/components/shared/GrandparentCard';
-import { Heart, Search, Filter, Sparkles } from 'lucide-react';
+import { Heart, Search } from 'lucide-react';
 
 interface PageProps {
   onOpenDonateModal?: (residentName?: string, residentId?: string) => void;

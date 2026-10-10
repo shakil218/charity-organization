@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
-import { Building, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Building, CheckCircle2 } from 'lucide-react';
 
 export default function FacilitiesPage() {
   const { locale, t } = useLanguage();

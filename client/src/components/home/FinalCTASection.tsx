@@ -1,65 +1,109 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
-import { useLanguage } from '@/context/LanguageContext';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
+import { FinalCTAContent, FinalCTAMedia, FinalCTASectionProps } from './final-cta';
 
-interface FinalCTASectionProps {
-  onOpenDonateModal?: () => void;
-}
+export * from './final-cta';
 
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+const fadeInUpSlow: Variants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } }
 };
 
-export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenDonateModal }) => {
-  const { locale, t } = useLanguage();
+const fadeInRightSlow: Variants = {
+  hidden: { opacity: 0, x: 90 },
+  visible: { opacity: 1, x: 0, transition: { duration: 2.2, ease: [0.16, 1, 0.3, 1] } }
+};
+
+/**
+ * Final Call to Action Section for Sonavan Old Rehabilitation Center.
+ *
+ * Design Specifications:
+ * - Full-width deep teal background (#145B52).
+ * - White heading ("Let's Build a More Caring Community." / "আসুন, গড়ে তুলি আরও যত্নশীল একটি সমাজ।")
+ * - Supporting text ("Your time, kindness, and support can help promote dignity and belonging for older adults.")
+ * - Soft gold accents (#D6B56D) for high-contrast accessibility & brand alignment.
+ * - Primary CTA: "Get Involved" -> /get-involved
+ * - Secondary CTA: "Contact Us" -> /contact
+ * - Rounded buttons with generous padding and focus rings.
+ * - Authentic community photograph preview with subtle ambient decorative lighting.
+ * - Fully responsive, accessible, and free of unsupported outcome claims.
+ */
+export const FinalCTASection: React.FC<FinalCTASectionProps> = ({
+  heading,
+  description,
+  primaryCtaText,
+  primaryCtaHref = '/get-involved',
+  secondaryCtaText,
+  secondaryCtaHref = '/contact',
+  onOpenDonateModal,
+  className = ''
+}) => {
   const scrollDirection = useScrollDirection();
   const isScrollingUp = scrollDirection === 'up';
 
   return (
-    <motion.section
-      initial="hidden"
-      animate={isScrollingUp ? 'visible' : undefined}
-      whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }}
-      variants={fadeInUp}
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+    <section
+      aria-label="Final Call to Action"
+      className={`w-full relative overflow-hidden bg-[#145B52] text-white py-16 sm:py-20 lg:py-24 border-t border-[#D6B56D]/20 shadow-[0_-4px_24px_rgba(20,91,82,0.15)] ${className}`}
     >
-      <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#145B52] to-[#276749] text-white p-8 sm:p-14 shadow-xl text-center space-y-6">
-        <div className="max-w-2xl mx-auto space-y-3">
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-[#FAF8F2]">
-            {locale === 'bn' ? 'আজই প্রবীণদের পাশে দাঁড়ান' : 'Stand Beside Our Senior Parents Today'}
-          </h2>
-          <p className="text-sm text-teal-100/90 leading-relaxed">
-            {locale === 'bn'
-              ? 'আপনার সামান্য সহায়তায় একজন প্রবীণ পেতে পারেন একটি সুন্দর সম্মানজনক ঠিকানা ও সুচিকিৎসা।'
-              : 'Your kindness ensures continuous medical treatment, dignified shelter, and lifelong care.'}
-          </p>
-        </div>
+      {/* Background Decorative Ambient Shapes */}
+      <div
+        className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#D6B56D]/10 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-1/2 -right-24 w-80 h-80 rounded-full bg-[#276749]/40 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 left-1/3 w-72 h-72 rounded-full bg-[#FAF8F2]/5 blur-2xl pointer-events-none"
+        aria-hidden="true"
+      />
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
-          <motion.button
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => onOpenDonateModal?.()}
-            className="px-8 py-3.5 rounded-xl bg-[#D6B56D] hover:bg-[#C5A154] text-teal-950 font-bold text-sm shadow-md transition cursor-pointer"
+      {/* Subtle geometric pattern overlay */}
+      <div
+        className="absolute inset-0 bg-[radial-gradient(#D6B56D_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.06] pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-8 md:gap-8 lg:gap-16 items-center">
+          {/* Left Column: Heading, Description, CTA Buttons (Animates from below very slowly) */}
+          <motion.div
+            initial="hidden"
+            animate={isScrollingUp ? 'visible' : undefined}
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={fadeInUpSlow}
+            className="md:col-span-7 lg:col-span-7"
           >
-            {locale === 'bn' ? 'এখনই অনুদান দিন' : 'Make a Donation Now'}
-          </motion.button>
-          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
-            <Link
-              href="/contact"
-              className="inline-block px-8 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold text-sm backdrop-blur-md transition"
-            >
-              {t.nav.contact}
-            </Link>
+            <FinalCTAContent
+              heading={heading}
+              description={description}
+              primaryCtaText={primaryCtaText}
+              primaryCtaHref={primaryCtaHref}
+              secondaryCtaText={secondaryCtaText}
+              secondaryCtaHref={secondaryCtaHref}
+              onOpenDonateModal={onOpenDonateModal}
+            />
+          </motion.div>
+
+          {/* Right Column: Authentic Community Visual & Accents (Animates from right side very slowly) */}
+          <motion.div
+            initial="hidden"
+            animate={isScrollingUp ? 'visible' : undefined}
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={fadeInRightSlow}
+            className="md:col-span-5 lg:col-span-5"
+          >
+            <FinalCTAMedia />
           </motion.div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
