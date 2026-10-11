@@ -19,6 +19,7 @@ import {
   AboutGalleryPreviewSection,
   AboutFAQSection,
   AboutGetInvolvedCTASection,
+  AboutContactCTASection,
   OurStoryHistorySection 
 } from '@/components/about';
 
@@ -184,6 +185,9 @@ export default function AboutPage() {
 
       {/* Get Involved Call-to-Action Section (Be Part of a More Caring Community) */}
       <AboutGetInvolvedCTASection id="get-involved-cta" />
+
+      {/* Final Contact Call-to-Action Section (Want to Know More About Our Work?) */}
+      <AboutContactCTASection id="final-contact-cta" />
 
     </div>
   );
