@@ -7,3 +7,4 @@ export * from './values';
 export * from './goals';
 export * from './approach';
 export * from './impact';
+export * from './leadership';

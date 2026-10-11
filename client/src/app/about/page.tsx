@@ -13,6 +13,7 @@ import {
   AboutGoalsSection,
   AboutApproachSection,
   AboutImpactSection,
+  AboutLeadershipSection,
   OurStoryHistorySection 
 } from '@/components/about';
 
@@ -69,6 +70,9 @@ export default function AboutPage() {
 
       {/* Our Impact & Achievements Section (Verified Metrics / Qualitative Priorities, Milestones & Reports) */}
       <AboutImpactSection id="our-impact" />
+
+      {/* Leadership & Governance Section (The People Behind Our Mission & Verified Governance Structure) */}
+      <AboutLeadershipSection id="leadership-governance" />
 
       {/* Core Care Pillars & Facilities (Animates every time on scroll down) */}
       <section id="services-section" className="bg-[#F2ECE0]/60 py-12 sm:py-16 border-y border-teal-900/10 scroll-mt-24">
