@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { ServicesHeroSection } from '@/components/services';
+import { ServicesHeroSection, ServicesOverviewSection } from '@/components/services';
 import { Activity, Heart, Utensils, Smile } from 'lucide-react';
 
 interface PageProps {
@@ -22,7 +22,10 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
   return (
     <div className="flex flex-col">
       {/* Full-width Premium Services Hero Section */}
-      <ServicesHeroSection />
+      <ServicesHeroSection primaryButtonHref="#services-overview" />
+
+      {/* Services Overview Section: Care Philosophy & 3 Value Cards */}
+      <ServicesOverviewSection id="services-overview" />
 
       <div className="space-y-16 py-12 sm:py-16">
         {/* Services Grid */}
