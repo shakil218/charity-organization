@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Users, CheckCircle2, HeartHandshake } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { API_BASE_URL } from '@/lib/api';
 
 export default function VolunteerPage() {
   const { locale, t } = useLanguage();
@@ -40,7 +41,7 @@ export default function VolunteerPage() {
     setLoading(true);
 
     try {
-      await fetch('http://localhost:5000/api/volunteer', {
+      await fetch(`${API_BASE_URL}/api/volunteer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

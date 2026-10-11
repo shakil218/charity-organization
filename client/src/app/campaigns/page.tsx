@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { CampaignCard, CampaignItem } from '@/components/shared/CampaignCard';
 import { Activity } from 'lucide-react';
+import { API_BASE_URL } from '@/lib/api';
 
 interface PageProps {
   onOpenDonateModal?: (residentName?: string, residentId?: string) => void;
@@ -18,7 +19,7 @@ export default function CampaignsPage({ onOpenDonateModal }: PageProps) {
   useEffect(() => {
     async function fetchCampaigns() {
       try {
-        const res = await fetch('http://localhost:5000/api/campaigns');
+        const res = await fetch(`${API_BASE_URL}/api/campaigns`);
         if (res.ok) {
           setCampaigns(await res.json());
         } else {

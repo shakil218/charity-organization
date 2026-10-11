@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { MapPin, Phone, Mail, Send, CheckCircle2 } from 'lucide-react';
+import { API_BASE_URL } from '@/lib/api';
 
 export default function ContactPage() {
   const { locale, t } = useLanguage();
@@ -22,7 +23,7 @@ export default function ContactPage() {
     setLoading(true);
 
     try {
-      await fetch('http://localhost:5000/api/inquiry', {
+      await fetch(`${API_BASE_URL}/api/inquiry`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, phone, subject, message })

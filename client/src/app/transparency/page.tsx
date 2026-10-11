@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { TransparencyCard, TransparencyLogItem } from '@/components/shared/TransparencyCard';
 import { ShieldCheck, FileText, Download } from 'lucide-react';
+import { API_BASE_URL } from '@/lib/api';
 
 export default function TransparencyPage() {
   const { locale, t } = useLanguage();
@@ -14,7 +15,7 @@ export default function TransparencyPage() {
   useEffect(() => {
     async function fetchLogs() {
       try {
-        const res = await fetch('http://localhost:5000/api/transparency');
+        const res = await fetch(`${API_BASE_URL}/api/transparency`);
         if (res.ok) {
           setLogs(await res.json());
         } else {

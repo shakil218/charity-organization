@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { X, Heart, ShieldCheck, CheckCircle2, CreditCard, Lock } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { API_BASE_URL } from '@/lib/api';
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -43,7 +44,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
 
     try {
       // Send payload to backend server API
-      const res = await fetch('http://localhost:5000/api/donate', {
+      const res = await fetch(`${API_BASE_URL}/api/donate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

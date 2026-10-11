@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { GrandparentCard, ResidentProfile } from '@/components/shared/GrandparentCard';
 import { Heart, Search } from 'lucide-react';
+import { API_BASE_URL } from '@/lib/api';
 
 interface PageProps {
   onOpenDonateModal?: (residentName?: string, residentId?: string) => void;
@@ -20,7 +21,7 @@ export default function ElderlyCarePage({ onOpenDonateModal }: PageProps) {
   useEffect(() => {
     async function fetchResidents() {
       try {
-        const res = await fetch('http://localhost:5000/api/residents');
+        const res = await fetch(`${API_BASE_URL}/api/residents`);
         if (res.ok) {
           setResidents(await res.json());
         } else {
