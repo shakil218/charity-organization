@@ -73,7 +73,7 @@ export const ServiceCategoriesSection: React.FC<ServiceCategoriesSectionProps> =
     <section
       id={id}
       aria-labelledby={`${id}-heading`}
-      className={`relative w-full bg-[#FAF8F2] py-16 sm:py-24 scroll-mt-24 ${className}`}
+      className={`relative w-full bg-[#FAF8F2] pt-16 sm:pt-20 pb-10 sm:pb-14 scroll-mt-24 ${className}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -130,7 +130,7 @@ export const ServiceCategoriesSection: React.FC<ServiceCategoriesSectionProps> =
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-14 sm:mt-16 p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#F2ECE0]/70 border border-[#145B52]/10 shadow-xs flex flex-col md:flex-row items-center justify-between gap-5"
+          className="mt-8 sm:mt-10 p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#F2ECE0]/70 border border-[#145B52]/10 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <div className="flex items-start gap-3.5 text-xs sm:text-sm text-[#242B29]/85 leading-relaxed">
             <Info className="w-5 h-5 text-[#D6B56D] shrink-0 mt-0.5" aria-hidden="true" />
