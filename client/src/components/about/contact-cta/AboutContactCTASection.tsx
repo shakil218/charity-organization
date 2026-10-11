@@ -100,16 +100,16 @@ export const AboutContactCTASection: React.FC<AboutContactCTASectionProps> = ({
       className={`py-16 sm:py-24 bg-[#FAF8F2] border-t border-[#145B52]/10 scroll-mt-24 transition-colors duration-300 ${className}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        {/* Split Layout: 12-column grid on desktop, stacked on mobile/tablet */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-center">
+        {/* Split Layout: 12-column grid on tablet and desktop (md & lg), stacked on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-14 xl:gap-16 items-center">
 
-          {/* Left Column: Content, Confirmed Contact Details & Action Buttons (7 cols on lg) */}
+          {/* Left Column: Content, Confirmed Contact Details & Action Buttons (7 cols on md & lg) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }}
             variants={staggerContainer}
-            className="lg:col-span-7 space-y-6 sm:space-y-8"
+            className="md:col-span-7 space-y-6 sm:space-y-8"
           >
             {/* Top Pill Badges */}
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-2">
@@ -126,7 +126,7 @@ export const AboutContactCTASection: React.FC<AboutContactCTASectionProps> = ({
             {/* Main Section Heading */}
             <motion.h2
               variants={fadeInUp}
-              className={`text-3xl sm:text-4xl md:text-5xl font-black text-[#145B52] tracking-tight leading-tight ${
+              className={`text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#145B52] tracking-tight leading-tight ${
                 isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'
               }`}
             >
@@ -136,7 +136,7 @@ export const AboutContactCTASection: React.FC<AboutContactCTASectionProps> = ({
             {/* Description Paragraph */}
             <motion.p
               variants={fadeInUp}
-              className={`text-sm sm:text-base md:text-lg text-[#242B29]/80 leading-relaxed font-normal max-w-2xl ${
+              className={`text-sm sm:text-base md:text-base lg:text-lg text-[#242B29]/80 leading-relaxed font-normal max-w-2xl ${
                 isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'
               }`}
             >
@@ -146,11 +146,11 @@ export const AboutContactCTASection: React.FC<AboutContactCTASectionProps> = ({
             {/* Action Buttons: Primary (Contact Us) & Secondary (Explore Our Services) */}
             <motion.div
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1"
+              className="flex flex-col sm:flex-row md:flex-row items-stretch sm:items-center md:items-center gap-3 sm:gap-3.5 pt-1"
             >
               <Link
                 href={primaryButtonHref}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl bg-[#145B52] text-white font-bold text-sm shadow-md hover:bg-[#0E3E37] hover:shadow-lg transition-all duration-200 group focus:outline-hidden focus-visible:ring-3 focus-visible:ring-[#D6B56D]"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-2xl bg-[#145B52] text-white font-bold text-sm shadow-md hover:bg-[#0E3E37] hover:shadow-lg transition-all duration-200 group focus:outline-hidden focus-visible:ring-3 focus-visible:ring-[#D6B56D]"
               >
                 <span>{primaryBtnLabel}</span>
                 <ArrowRight className="w-4 h-4 text-[#D6B56D] group-hover:translate-x-1 transition-transform" />
@@ -158,7 +158,7 @@ export const AboutContactCTASection: React.FC<AboutContactCTASectionProps> = ({
 
               <Link
                 href={secondaryButtonHref}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-[#FAF8F2] text-[#145B52] font-bold text-sm border border-[#145B52]/20 hover:border-[#145B52]/40 shadow-2xs hover:shadow-xs transition-all duration-200 group focus:outline-hidden focus-visible:ring-3 focus-visible:ring-[#145B52]"
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl bg-white hover:bg-[#FAF8F2] text-[#145B52] font-bold text-sm border border-[#145B52]/20 hover:border-[#145B52]/40 shadow-2xs hover:shadow-xs transition-all duration-200 group focus:outline-hidden focus-visible:ring-3 focus-visible:ring-[#145B52]"
               >
                 <span>{secondaryBtnLabel}</span>
                 <ArrowRight className="w-4 h-4 text-[#145B52]/70 group-hover:translate-x-1 transition-transform" />
@@ -174,7 +174,7 @@ export const AboutContactCTASection: React.FC<AboutContactCTASectionProps> = ({
                 {isBn ? 'প্রাতিষ্ঠানিক যোগাযোগ ও অফিস সময়' : 'Official Contact & Office Hours'}
               </span>
 
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 md:gap-3 lg:gap-4">
                 {/* Confirmed Phone Link */}
                 {contactPhone && (
                   <a
@@ -212,22 +212,22 @@ export const AboutContactCTASection: React.FC<AboutContactCTASectionProps> = ({
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Welcoming Split Photograph (5 cols on lg) */}
+          {/* Right Column: Welcoming Split Photograph (5 cols on md & lg) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }}
             variants={imageFadeIn}
-            className="lg:col-span-5 relative"
+            className="md:col-span-5 relative"
           >
             {/* Visual Container with Rounded Corners & Soft Shadows */}
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] w-full rounded-3xl overflow-hidden border-2 border-[#145B52]/15 bg-white shadow-[0_12px_36px_-8px_rgba(20,91,82,0.14)] group">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] md:aspect-[4/3] w-full rounded-3xl overflow-hidden border-2 border-[#145B52]/15 bg-white shadow-[0_12px_36px_-8px_rgba(20,91,82,0.14)] group">
               <Image
                 src={imageSrc}
                 alt={altText}
                 fill
                 loading="lazy"
-                sizes="(max-width: 1024px) 100vw, 42vw"
+                sizes="(max-width: 768px) 100vw, 42vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
 
