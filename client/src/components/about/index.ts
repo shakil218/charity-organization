@@ -12,3 +12,4 @@ export * from './transparency';
 export * from './community';
 export * from './gallery';
 export * from './faq';
+export * from './cta';
