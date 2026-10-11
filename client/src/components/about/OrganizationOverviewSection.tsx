@@ -119,7 +119,7 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
     <section
       id={id}
       aria-label="Organization Overview"
-      className={`relative w-full py-12 sm:py-16 lg:py-20 bg-[#FAF8F2] overflow-hidden scroll-mt-24 ${className}`}
+      className={`relative w-full py-12 sm:py-16 md:py-20 lg:py-20 bg-[#FAF8F2] overflow-hidden scroll-mt-24 ${className}`}
     >
       {/* Background Subtle Accent Glows */}
       <div 
@@ -132,15 +132,15 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-10 lg:gap-16 items-center">
 
-          {/* Left Column: Large Photograph with Small Decorative Overlapping Image Frame (Animates fade in from left side) */}
+          {/* Left Column: Large Photograph with Small Decorative Overlapping Image Frame (2 columns on md and lg) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={fadeInLeft}
-            className="lg:col-span-5 relative"
+            className="md:col-span-5 relative"
           >
             {/* Ambient Shadow / Border Decor */}
             <div 
@@ -150,7 +150,7 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
 
             {/* Main Primary Image Container */}
             <div className="relative rounded-3xl overflow-hidden border-2 border-[#145B52]/15 shadow-xl bg-white">
-              <div className="relative w-full aspect-4/5 sm:aspect-1/1 lg:aspect-4/5 overflow-hidden">
+              <div className="relative w-full aspect-4/5 sm:aspect-1/1 md:aspect-4/5 lg:aspect-4/5 overflow-hidden">
                 <Image
                   src={mainImageSrc}
                   alt={mainImageAlt}
@@ -181,9 +181,9 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.1 }}
               variants={fadeInLeftAccent}
-              className="hidden sm:block absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 w-44 sm:w-52 lg:w-48 aspect-4/3 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-[#0E423B] z-20"
+              className="hidden sm:block absolute -bottom-6 -right-6 md:-bottom-7 md:-right-7 lg:-bottom-8 lg:-right-8 w-44 sm:w-52 md:w-44 lg:w-48 aspect-4/3 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-[#0E423B] z-20"
             >
               <Image
                 src={secondaryImageSrc}
@@ -209,9 +209,9 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={staggerContainer}
-            className="lg:col-span-7 space-y-6 sm:space-y-7"
+            className="md:col-span-7 space-y-6 sm:space-y-7"
           >
             
             {/* Eyebrow */}
@@ -224,7 +224,7 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
 
             {/* Heading */}
             <motion.div variants={fadeInUp} className="space-y-2">
-              <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-black text-[#145B52] tracking-tight leading-[1.2] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
+              <h2 className={`text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-black text-[#145B52] tracking-tight leading-[1.2] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
                 {isBn 
                   ? 'যত্ন, মর্যাদা ও আত্মিক শ্রদ্ধার প্রতি আমাদের অঙ্গীকার' 
                   : 'A Commitment to Care, Dignity and Belonging'}
@@ -255,23 +255,23 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
             {/* 4 Core Highlights Cards */}
             <motion.div 
               variants={fadeInUp}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 pt-2"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-3.5 sm:gap-4 md:gap-3 lg:gap-4 pt-2"
             >
               {highlights.map((item, index) => {
                 const IconComponent = item.icon;
                 return (
                   <div
                     key={index}
-                    className="p-4 rounded-2xl bg-white border border-[#145B52]/10 shadow-xs hover:shadow-md hover:border-[#D6B56D]/50 transition-all duration-200 flex items-start gap-3.5"
+                    className="p-4 md:p-3 lg:p-4 rounded-2xl bg-white border border-[#145B52]/10 shadow-xs hover:shadow-md hover:border-[#D6B56D]/50 transition-all duration-200 flex items-start gap-3.5 md:gap-2.5 lg:gap-3.5"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#145B52]/10 text-[#145B52] flex items-center justify-center shrink-0">
-                      <IconComponent className="w-5 h-5 text-[#145B52]" aria-hidden="true" />
+                    <div className="w-10 h-10 md:w-9 md:h-9 lg:w-10 lg:h-10 rounded-xl bg-[#145B52]/10 text-[#145B52] flex items-center justify-center shrink-0">
+                      <IconComponent className="w-5 h-5 md:w-4.5 md:h-4.5 lg:w-5 lg:h-5 text-[#145B52]" aria-hidden="true" />
                     </div>
                     <div className="space-y-1">
-                      <h3 className={`text-xs sm:text-sm font-bold text-[#145B52] leading-snug ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
+                      <h3 className={`text-xs sm:text-sm md:text-xs lg:text-sm font-bold text-[#145B52] leading-snug ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
                         {item.title}
                       </h3>
-                      <p className={`text-[11px] sm:text-xs text-[#242B29]/70 leading-relaxed ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
+                      <p className={`text-[11px] sm:text-xs md:text-[11px] lg:text-xs text-[#242B29]/70 leading-relaxed ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
                         {item.description}
                       </p>
                     </div>
@@ -284,7 +284,7 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
             <motion.div variants={fadeInUp} className="pt-3 flex flex-wrap items-center gap-3.5">
               <Link
                 href="/contact"
-                className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#145B52] hover:bg-[#0E423B] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#145B52] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}
+                className={`inline-flex items-center gap-2 px-5 py-3 md:px-4 md:py-2.5 lg:px-5 lg:py-3 rounded-xl bg-[#145B52] hover:bg-[#0E423B] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#145B52] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}
               >
                 <Mail className="w-4 h-4 text-[#D6B56D]" aria-hidden="true" />
                 <span>{isBn ? 'আমাদের সাথে যোগাযোগ করুন' : 'Contact Us'}</span>
@@ -293,7 +293,7 @@ export const OrganizationOverviewSection: React.FC<OrganizationOverviewSectionPr
 
               <Link
                 href="/services"
-                className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-[#F2ECE0] border border-[#145B52]/20 text-[#145B52] text-xs sm:text-sm font-bold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#145B52] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}
+                className={`inline-flex items-center gap-2 px-5 py-3 md:px-4 md:py-2.5 lg:px-5 lg:py-3 rounded-xl bg-white hover:bg-[#F2ECE0] border border-[#145B52]/20 text-[#145B52] text-xs sm:text-sm font-bold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#145B52] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}
               >
                 <span>{isBn ? 'সেবাসমূহ বিস্তারিত জানুন' : 'Learn More About Our Services'}</span>
               </Link>

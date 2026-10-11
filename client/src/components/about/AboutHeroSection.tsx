@@ -98,14 +98,14 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
         aria-hidden="true" 
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-14 relative z-10">
         
         {/* Breadcrumb Navigation */}
         {showBreadcrumbs && (
           <motion.nav 
             initial={{ opacity: 0, y: -12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.1 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             aria-label="Breadcrumb" 
             className="mb-6 sm:mb-8 flex items-center gap-2 text-xs sm:text-sm font-medium text-[#FAF8F2]/75"
@@ -139,16 +139,16 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
           </motion.nav>
         )}
 
-        {/* 2-Column Responsive Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* 2-Column Responsive Layout (md and lg both 2-column) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Heading, Eyebrow, and Descriptions */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={staggerContainer}
-            className="lg:col-span-7 space-y-5 sm:space-y-6"
+            className="md:col-span-7 space-y-5 sm:space-y-6"
           >
             
             {/* Eyebrow Pill */}
@@ -163,7 +163,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
 
             {/* Main Page Heading */}
             <motion.div variants={fadeInUp} className="space-y-2">
-              <h1 className={`text-3xl sm:text-4xl md:text-5xl font-black text-[#FAF8F2] tracking-tight leading-[1.15] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
+              <h1 className={`text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-black text-[#FAF8F2] tracking-tight leading-[1.15] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}` }>
                 {isBn 
                   ? 'সোনাভান বয়স্ক পুনর্বাসন কেন্দ্র সম্পর্কে' 
                   : 'About Sonavan Old Rehabilitation Center'}
@@ -226,9 +226,9 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={fadeInRightPhoto}
-            className="lg:col-span-5 relative mt-4 lg:mt-0"
+            className="md:col-span-5 relative mt-4 md:mt-0"
           >
             
             {/* Soft Gold Backdrop Accent Frame with gentle pulse */}
@@ -242,7 +242,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#D6B56D]/40 bg-[#0E423B] shadow-2xl group">
               
               {/* Aspect Ratio Container for Responsive Image with Ken Burns Zoom */}
-              <div className="relative w-full aspect-4/3 sm:aspect-16/11 lg:aspect-4/3 overflow-hidden">
+              <div className="relative w-full aspect-4/3 sm:aspect-16/11 md:aspect-4/3 overflow-hidden">
                 <motion.div
                   className="relative w-full h-full"
                   animate={{ scale: [1, 1.08] }}
