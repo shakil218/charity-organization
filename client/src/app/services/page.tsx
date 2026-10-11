@@ -10,7 +10,8 @@ import {
   SocialWellbeingSection,
   DailyLivingSupportSection,
   HealthCoordinationSection,
-  HowServicesWorkSection 
+  HowServicesWorkSection,
+  WhoWeSupportSection 
 } from '@/components/services';
 
 interface PageProps {
@@ -49,6 +50,9 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
 
       {/* 9. How Our Services Work Section: Getting the Information You Need */}
       <HowServicesWorkSection id="how-services-work" />
+
+      {/* 10. Who We Support Section: Understanding Different Support Needs */}
+      <WhoWeSupportSection id="who-we-support" />
     </div>
   );
 }
