@@ -100,19 +100,19 @@ export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
           {/* Top Bar */}
           <div className="flex items-center justify-between px-5 py-3.5 bg-black/40 border-b border-white/10 text-white select-none">
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className="text-xs font-bold text-[#D6B56D] bg-[#D6B56D]/15 px-2.5 py-1 rounded-full border border-[#D6B56D]/30">
+              <span className="text-xs font-bold text-[#D6B56D] bg-[#D6B56D]/15 px-2.5 py-1 rounded-full border border-[#D6B56D]/30 shrink-0 whitespace-nowrap">
                 {currentIndex + 1} / {images.length}
               </span>
 
               {category && (
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-teal-200 bg-teal-900/50 px-2.5 py-1 rounded-full border border-teal-700/50">
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-teal-200 bg-teal-900/50 px-2.5 py-1 rounded-full border border-teal-700/50 shrink-0 whitespace-nowrap">
                   <Tag className="w-3 h-3 text-[#D6B56D]" aria-hidden="true" />
                   <span>{category}</span>
                 </span>
               )}
 
               {date && (
-                <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-200 bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-700/40">
+                <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-200 bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-700/40 shrink-0 whitespace-nowrap">
                   <Calendar className="w-3 h-3 text-[#D6B56D]" aria-hidden="true" />
                   <span>{date}</span>
                 </span>

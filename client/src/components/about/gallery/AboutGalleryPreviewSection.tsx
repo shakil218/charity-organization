@@ -192,11 +192,11 @@ export const AboutGalleryPreviewSection: React.FC<AboutGalleryPreviewSectionProp
                 <ShieldCheck className="w-5 h-5 text-[#145B52]" aria-hidden="true" />
               </div>
               <div className="space-y-1">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                   <span className="text-xs font-bold text-[#145B52] uppercase tracking-wider">
                     {isBn ? 'প্রবীণদের মর্যাদা ও গোপনীয়তা রক্ষা' : 'Elder Dignity & Privacy Charter'}
                   </span>
-                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                  <span className="inline-flex items-center shrink-0 whitespace-nowrap text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200/80 shadow-2xs">
                     {isBn ? 'সম্মতিমূলক' : 'Consent-Based'}
                   </span>
                 </div>

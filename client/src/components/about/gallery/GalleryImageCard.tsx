@@ -92,14 +92,14 @@ export const GalleryImageCard: React.FC<GalleryImageCardProps> = ({
         <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between gap-2 pointer-events-none">
           <div className="flex flex-wrap items-center gap-1.5">
             {category && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-xs text-[#145B52] border border-[#145B52]/15 shadow-2xs">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-xs text-[#145B52] border border-[#145B52]/15 shadow-2xs shrink-0 whitespace-nowrap">
                 <Tag className="w-3 h-3 text-[#D6B56D]" aria-hidden="true" />
                 <span>{category}</span>
               </span>
             )}
 
             {date && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-medium bg-[#145B52]/90 backdrop-blur-xs text-white shadow-2xs">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-medium bg-[#145B52]/90 backdrop-blur-xs text-white shadow-2xs shrink-0 whitespace-nowrap">
                 <Calendar className="w-3 h-3 text-[#D6B56D]" aria-hidden="true" />
                 <span>{date}</span>
               </span>
@@ -114,7 +114,7 @@ export const GalleryImageCard: React.FC<GalleryImageCardProps> = ({
                   ? 'প্রবীণদের গোপনীয়তা রক্ষার্থে প্রতীকী চিত্র ব্যবহৃত'
                   : 'Illustrative atmosphere respecting resident privacy'
               }
-              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9.5px] font-semibold bg-emerald-900/80 backdrop-blur-xs text-emerald-100 border border-emerald-500/30 shadow-2xs shrink-0"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9.5px] font-semibold bg-emerald-900/80 backdrop-blur-xs text-emerald-100 border border-emerald-500/30 shadow-2xs shrink-0 whitespace-nowrap"
             >
               <ShieldCheck className="w-3 h-3 text-[#D6B56D]" aria-hidden="true" />
               <span className="hidden sm:inline">
