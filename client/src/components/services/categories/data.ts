@@ -86,7 +86,7 @@ export const DEFAULT_SERVICE_CATEGORIES_DATA = {
         bn: 'প্রবীণদের প্রাণবন্ত সামাজিক আলাপচারিতা ও আনন্দঘন সান্নিধ্য'
       },
       iconName: 'Smile',
-      href: '/stories'
+      href: '#social-emotional-wellbeing'
     },
     {
       id: 'daily-living-support',
