@@ -40,7 +40,7 @@ export const DEFAULT_SERVICE_CATEGORIES_DATA = {
         bn: 'প্রবীণ সদস্যকে আন্তরিক মমতায় পরিচর্যা ও সাহচর্য প্রদান'
       },
       iconName: 'HeartHandshake',
-      href: '/elderly-care'
+      href: '#elderly-support'
     },
     {
       id: 'rehabilitation-assistance',
@@ -57,13 +57,13 @@ export const DEFAULT_SERVICE_CATEGORIES_DATA = {
         en: 'Under Planning',
         bn: 'পরিকল্পনাধীন ক্ষেত্র'
       },
-      imageUrl: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=700',
+      imageUrl: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&q=80&w=700',
       imageAlt: {
-        en: 'Supportive mobility and gentle rehabilitation walking exercises in a bright room',
-        bn: 'প্রবীণদের শারীরিক সচলতা ও হাঁটাচলায় সহায়তামূলক নিরাপদ পরিবেশ'
+        en: 'Supportive mobility and gentle rehabilitation daily activities in a bright room',
+        bn: 'প্রবীণদের শারীরিক সচলতা ও স্বাভাবিক জীবনযাপনে সহায়তামূলক নিরাপদ পরিবেশ'
       },
       iconName: 'Activity',
-      href: '/facilities'
+      href: '#rehabilitation-assistance'
     },
     {
       id: 'social-emotional-wellbeing',

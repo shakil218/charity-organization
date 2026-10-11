@@ -5,7 +5,8 @@ import {
   ServicesHeroSection, 
   ServicesOverviewSection, 
   ServiceCategoriesSection,
-  ElderlySupportSection 
+  ElderlySupportSection,
+  RehabilitationAssistanceSection 
 } from '@/components/services';
 
 interface PageProps {
@@ -29,6 +30,9 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
 
       {/* 4. Detailed Elderly Support Section: Two-Column Respectful Care & 4 Areas */}
       <ElderlySupportSection id="elderly-support" imagePosition="left" />
+
+      {/* 5. Rehabilitation Assistance Section: Supporting Independence & Everyday Participation */}
+      <RehabilitationAssistanceSection id="rehabilitation-assistance" imagePosition="right" />
     </div>
   );
 }
