@@ -1,3 +1,4 @@
 export * from './hero';
 export * from './overview';
 export * from './categories';
+export * from './elderly-support';

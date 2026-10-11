@@ -4,7 +4,8 @@ import React from 'react';
 import { 
   ServicesHeroSection, 
   ServicesOverviewSection, 
-  ServiceCategoriesSection 
+  ServiceCategoriesSection,
+  ElderlySupportSection 
 } from '@/components/services';
 
 interface PageProps {
@@ -25,6 +26,9 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
         id="services-list" 
         onOpenDonateModal={onOpenDonateModal} 
       />
+
+      {/* 4. Detailed Elderly Support Section: Two-Column Respectful Care & 4 Areas */}
+      <ElderlySupportSection id="elderly-support" imagePosition="left" />
     </div>
   );
 }
