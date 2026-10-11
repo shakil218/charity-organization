@@ -17,6 +17,7 @@ import {
   AboutTransparencySection,
   AboutCommunitySection,
   AboutGalleryPreviewSection,
+  AboutFAQSection,
   OurStoryHistorySection 
 } from '@/components/about';
 
@@ -176,6 +177,9 @@ export default function AboutPage() {
 
         </div>
       </section>
+
+      {/* About Us FAQ Section (Learn More About Us) */}
+      <AboutFAQSection id="about-faq" />
 
     </div>
   );
