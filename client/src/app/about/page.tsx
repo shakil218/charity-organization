@@ -9,6 +9,7 @@ import {
   OrganizationOverviewSection, 
   AboutMissionSection, 
   AboutVisionSection,
+  AboutValuesSection,
   OurStoryHistorySection 
 } from '@/components/about';
 
@@ -53,6 +54,9 @@ export default function AboutPage() {
 
       {/* Our Vision Section (Warm Cream Background, Deep Teal Typography & Soft-Gold Accents) */}
       <AboutVisionSection id="our-vision" />
+
+      {/* Core Values Section (Responsive Cards, Warm Cream, Deep Teal & Soft-Gold Accents) */}
+      <AboutValuesSection id="our-values" />
 
       {/* Core Care Pillars & Facilities (Animates every time on scroll down) */}
       <section id="services-section" className="bg-[#F2ECE0]/60 py-12 sm:py-16 border-y border-teal-900/10 scroll-mt-24">
