@@ -9,3 +9,4 @@ export * from './approach';
 export * from './impact';
 export * from './leadership';
 export * from './transparency';
+export * from './community';

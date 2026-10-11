@@ -15,6 +15,7 @@ import {
   AboutImpactSection,
   AboutLeadershipSection,
   AboutTransparencySection,
+  AboutCommunitySection,
   OurStoryHistorySection 
 } from '@/components/about';
 
@@ -77,6 +78,9 @@ export default function AboutPage() {
 
       {/* Transparency & Accountability Section (Trust Through Transparency & Resource Documents) */}
       <AboutTransparencySection id="transparency-accountability" />
+
+      {/* Community & Partnerships Section (Stronger Communities, Together) */}
+      <AboutCommunitySection id="community-partnerships" />
 
       {/* Core Care Pillars & Facilities (Animates every time on scroll down) */}
       <section id="services-section" className="bg-[#F2ECE0]/60 py-12 sm:py-16 border-y border-teal-900/10 scroll-mt-24">
