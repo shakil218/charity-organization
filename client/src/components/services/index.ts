@@ -6,3 +6,4 @@ export * from './rehabilitation';
 export * from './social-wellbeing';
 export * from './daily-living';
 export * from './health-coordination';
+export * from './how-services-work';

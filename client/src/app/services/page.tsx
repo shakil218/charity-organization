@@ -9,7 +9,8 @@ import {
   RehabilitationAssistanceSection,
   SocialWellbeingSection,
   DailyLivingSupportSection,
-  HealthCoordinationSection 
+  HealthCoordinationSection,
+  HowServicesWorkSection 
 } from '@/components/services';
 
 interface PageProps {
@@ -45,6 +46,9 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
 
       {/* 8. Health and Wellbeing Coordination Section: Helping People Find Appropriate Support */}
       <HealthCoordinationSection id="health-wellbeing-coordination" imagePosition="right" />
+
+      {/* 9. How Our Services Work Section: Getting the Information You Need */}
+      <HowServicesWorkSection id="how-services-work" />
     </div>
   );
 }
