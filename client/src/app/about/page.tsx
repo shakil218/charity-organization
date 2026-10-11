@@ -4,7 +4,13 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { ShieldCheck, Heart, Building } from 'lucide-react';
-import { AboutHeroSection, OrganizationOverviewSection, AboutMissionSection, OurStoryHistorySection } from '@/components/about';
+import { 
+  AboutHeroSection, 
+  OrganizationOverviewSection, 
+  AboutMissionSection, 
+  AboutVisionSection,
+  OurStoryHistorySection 
+} from '@/components/about';
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -44,6 +50,9 @@ export default function AboutPage() {
 
       {/* Visually Prominent Our Mission Section (Full-width Deep Teal & Forest-Green) */}
       <AboutMissionSection id="our-mission" />
+
+      {/* Our Vision Section (Warm Cream Background, Deep Teal Typography & Soft-Gold Accents) */}
+      <AboutVisionSection id="our-vision" />
 
       {/* Core Care Pillars & Facilities (Animates every time on scroll down) */}
       <section id="services-section" className="bg-[#F2ECE0]/60 py-12 sm:py-16 border-y border-teal-900/10 scroll-mt-24">
