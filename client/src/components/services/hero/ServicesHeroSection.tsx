@@ -142,7 +142,8 @@ export const ServicesHeroSection: React.FC<ServicesHeroSectionProps> = ({
         {showBreadcrumbs && (
           <motion.nav 
             initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
             aria-label="Breadcrumb" 
             className="mb-6 sm:mb-8 flex items-center gap-2 text-xs sm:text-sm font-medium text-[#FAF8F2]/75"
@@ -182,7 +183,8 @@ export const ServicesHeroSection: React.FC<ServicesHeroSectionProps> = ({
           {/* Left Column: Eyebrow, Heading, Subhead, Description & CTAs */}
           <motion.div 
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
             variants={staggerContainer}
             className="md:col-span-7 space-y-5 sm:space-y-6"
           >
@@ -269,7 +271,8 @@ export const ServicesHeroSection: React.FC<ServicesHeroSectionProps> = ({
           {/* Right Column: Warm, Welcoming Photograph */}
           <motion.div 
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
             variants={photoEntrance}
             className="md:col-span-5 relative mt-6 md:mt-0"
           >

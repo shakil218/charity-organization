@@ -81,7 +81,7 @@ export const ServiceCategoriesSection: React.FC<ServiceCategoriesSectionProps> =
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
           variants={staggerContainer}
           className="max-w-3xl mx-auto text-center space-y-4 sm:space-y-5"
         >
@@ -128,7 +128,7 @@ export const ServiceCategoriesSection: React.FC<ServiceCategoriesSectionProps> =
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-14 sm:mt-16 p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#F2ECE0]/70 border border-[#145B52]/10 shadow-xs flex flex-col md:flex-row items-center justify-between gap-5"
         >

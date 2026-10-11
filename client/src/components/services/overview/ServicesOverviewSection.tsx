@@ -110,7 +110,7 @@ export const ServicesOverviewSection: React.FC<ServicesOverviewSectionProps> = (
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
           variants={staggerContainer}
           className="max-w-3xl mx-auto text-center space-y-5 sm:space-y-6"
         >
@@ -154,7 +154,7 @@ export const ServicesOverviewSection: React.FC<ServicesOverviewSectionProps> = (
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
           variants={staggerContainer}
           className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
         >
@@ -214,8 +214,8 @@ export const ServicesOverviewSection: React.FC<ServicesOverviewSectionProps> = (
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-12 sm:mt-14 max-w-2xl mx-auto text-center"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#F2ECE0]/60 border border-[#145B52]/10 text-xs text-[#242B29]/75 leading-relaxed">
