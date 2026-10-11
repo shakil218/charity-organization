@@ -16,6 +16,7 @@ import {
   AboutLeadershipSection,
   AboutTransparencySection,
   AboutCommunitySection,
+  AboutGalleryPreviewSection,
   OurStoryHistorySection 
 } from '@/components/about';
 
@@ -81,6 +82,9 @@ export default function AboutPage() {
 
       {/* Community & Partnerships Section (Stronger Communities, Together) */}
       <AboutCommunitySection id="community-partnerships" />
+
+      {/* Photo Gallery Preview Section (A Glimpse Into Our Community) */}
+      <AboutGalleryPreviewSection id="gallery-preview" />
 
       {/* Core Care Pillars & Facilities (Animates every time on scroll down) */}
       <section id="services-section" className="bg-[#F2ECE0]/60 py-12 sm:py-16 border-y border-teal-900/10 scroll-mt-24">
