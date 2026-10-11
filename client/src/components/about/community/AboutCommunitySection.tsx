@@ -94,13 +94,13 @@ export const AboutCommunitySection: React.FC<AboutCommunitySectionProps> = ({
           </div>
         </motion.div>
 
-        {/* 3 Responsive Cards Grid (3 on lg, 2 on md, 1 on mobile) */}
+        {/* 3 Responsive Cards Grid (3 on md and lg, 1 on mobile) */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
           variants={staggerCards}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8"
         >
           {cards.map((card) => (
             <CommunityCard key={card.id} card={card} />
@@ -118,7 +118,7 @@ export const AboutCommunitySection: React.FC<AboutCommunitySectionProps> = ({
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
           variants={fadeInUp}
-          className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#145B52] to-[#0E423B] text-white shadow-lg space-y-6 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="p-7 md:p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-[#145B52] to-[#0E423B] text-white shadow-lg space-y-6 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="space-y-2 text-center md:text-left max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[#D6B56D] text-xs font-bold">
@@ -135,10 +135,10 @@ export const AboutCommunitySection: React.FC<AboutCommunitySectionProps> = ({
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3.5 shrink-0 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row md:flex-row items-center gap-3.5 shrink-0 w-full sm:w-auto md:w-auto">
             <Link
               href="/get-involved"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#D6B56D] hover:bg-[#C4A35B] text-[#145B52] text-sm font-extrabold shadow-md hover:shadow-lg transition-all duration-200 group"
+              className="w-full sm:w-auto md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#D6B56D] hover:bg-[#C4A35B] text-[#145B52] text-sm font-extrabold shadow-md hover:shadow-lg transition-all duration-200 group"
             >
               <span>{isBn ? 'যুক্ত হওয়ার উপায় দেখুন' : 'Get Involved'}</span>
               <ArrowRight className="w-4 h-4 text-[#145B52] group-hover:translate-x-1 transition-transform" aria-hidden="true" />
@@ -146,7 +146,7 @@ export const AboutCommunitySection: React.FC<AboutCommunitySectionProps> = ({
 
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 text-sm font-bold transition-all duration-200"
+              className="w-full sm:w-auto md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 text-sm font-bold transition-all duration-200"
             >
               <Mail className="w-4 h-4 text-[#D6B56D]" aria-hidden="true" />
               <span>{isBn ? 'যোগাযোগ করুন' : 'Contact Us'}</span>

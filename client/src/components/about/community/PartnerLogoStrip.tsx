@@ -89,7 +89,7 @@ export const PartnerLogoStrip: React.FC<PartnerLogoStripProps> = ({ partners = [
             </p>
           </div>
 
-          <div className="shrink-0 flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end gap-3">
+          <div className="shrink-0 flex flex-col sm:flex-row md:flex-row items-start sm:items-center md:items-center gap-3">
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#145B52] hover:bg-[#0E423B] text-white text-xs sm:text-sm font-bold shadow-2xs hover:shadow-sm transition-all duration-200 group"

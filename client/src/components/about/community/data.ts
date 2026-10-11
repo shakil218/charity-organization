@@ -40,15 +40,15 @@ export const DEFAULT_COMMUNITY_CARDS: CommunityEngagementCard[] = [
     icon: Users,
     primaryCta: {
       text: {
-        en: 'Explore Ways to Engage',
-        bn: 'যুক্ত হওয়ার উপায় দেখুন'
+        en: 'Get Involved',
+        bn: 'যুক্ত হোন'
       },
       href: '/get-involved'
     },
     secondaryCta: {
       text: {
-        en: 'Connect With Us',
-        bn: 'যোগাযোগ করুন'
+        en: 'Contact Us',
+        bn: 'যোগাযোগ'
       },
       href: '/contact'
     }
@@ -82,15 +82,15 @@ export const DEFAULT_COMMUNITY_CARDS: CommunityEngagementCard[] = [
     icon: HeartHandshake,
     primaryCta: {
       text: {
-        en: 'Join as a Volunteer',
-        bn: 'স্বেচ্ছাসেবক হিসেবে যুক্ত হোন'
+        en: 'Volunteer',
+        bn: 'স্বেচ্ছাসেবী'
       },
       href: '/get-involved'
     },
     secondaryCta: {
       text: {
-        en: 'Send an Inquiry',
-        bn: 'তথ্য জানতে লিখুন'
+        en: 'Inquire',
+        bn: 'তথ্য জানুন'
       },
       href: '/contact'
     }
@@ -124,15 +124,15 @@ export const DEFAULT_COMMUNITY_CARDS: CommunityEngagementCard[] = [
     icon: Building2,
     primaryCta: {
       text: {
-        en: 'Partner With Us',
-        bn: 'অংশীদারিত্বের জন্য যোগাযোগ'
+        en: 'Partner',
+        bn: 'অংশীদারিত্ব'
       },
       href: '/contact'
     },
     secondaryCta: {
       text: {
-        en: 'Learn About Outreach',
-        bn: 'কার্যক্রম বিস্তারিত জানুন'
+        en: 'Learn More',
+        bn: 'বিস্তারিত'
       },
       href: '/get-involved'
     }
