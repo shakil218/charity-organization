@@ -116,7 +116,7 @@ export const CarePrinciplesSection: React.FC<CarePrinciplesSectionProps> = ({
     <section
       id={id}
       aria-labelledby={`${id}-heading`}
-      className={`relative w-full bg-[#FAF8F2] pt-10 sm:pt-14 pb-16 sm:pb-24 border-b border-[#145B52]/10 scroll-mt-24 overflow-hidden ${className}`}
+      className={`relative w-full bg-[#FAF8F2] pt-10 sm:pt-14 pb-10 sm:pb-14 border-b border-[#145B52]/10 scroll-mt-24 overflow-hidden ${className}`}
     >
       {/* Ambient background glow accents */}
       <div 

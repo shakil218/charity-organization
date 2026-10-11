@@ -9,3 +9,4 @@ export * from './health-coordination';
 export * from './how-services-work';
 export * from './who-we-support';
 export * from './care-principles';
+export * from './practical-information';

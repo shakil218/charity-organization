@@ -12,7 +12,8 @@ import {
   HealthCoordinationSection,
   HowServicesWorkSection,
   WhoWeSupportSection,
-  CarePrinciplesSection
+  CarePrinciplesSection,
+  PracticalInformationSection
 } from '@/components/services';
 
 interface PageProps {
@@ -57,6 +58,9 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
 
       {/* 11. Our Care Principles Section: Principles Behind Respectful Support */}
       <CarePrinciplesSection id="care-principles" />
+
+      {/* 12. Service Availability & Information: Practical Information */}
+      <PracticalInformationSection id="practical-information" />
     </div>
   );
 }
