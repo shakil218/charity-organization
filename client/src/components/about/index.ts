@@ -8,3 +8,4 @@ export * from './goals';
 export * from './approach';
 export * from './impact';
 export * from './leadership';
+export * from './transparency';
