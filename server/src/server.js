@@ -185,6 +185,11 @@ app.post('/api/inquiry', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`SORC API Server running on port ${PORT}`);
-});
+// Only listen on port when run directly (local dev / standalone node), not when imported as a serverless function
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`SORC API Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
