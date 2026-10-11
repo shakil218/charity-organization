@@ -6,3 +6,4 @@ export * from './vision';
 export * from './values';
 export * from './goals';
 export * from './approach';
+export * from './impact';

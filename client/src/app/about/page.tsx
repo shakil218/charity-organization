@@ -12,6 +12,7 @@ import {
   AboutValuesSection,
   AboutGoalsSection,
   AboutApproachSection,
+  AboutImpactSection,
   OurStoryHistorySection 
 } from '@/components/about';
 
@@ -65,6 +66,9 @@ export default function AboutPage() {
 
       {/* Our Approach to Elderly Care Section (Person-Centered, 4 Principles, Photo & Services CTA) */}
       <AboutApproachSection id="our-approach" />
+
+      {/* Our Impact & Achievements Section (Verified Metrics / Qualitative Priorities, Milestones & Reports) */}
+      <AboutImpactSection id="our-impact" />
 
       {/* Core Care Pillars & Facilities (Animates every time on scroll down) */}
       <section id="services-section" className="bg-[#F2ECE0]/60 py-12 sm:py-16 border-y border-teal-900/10 scroll-mt-24">
