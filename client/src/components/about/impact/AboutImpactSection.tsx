@@ -483,8 +483,8 @@ export const AboutImpactSection: React.FC<AboutImpactSectionProps> = ({
 
         {/* 2. Row / Grid of Impact Metrics (4 Responsive Cards: 4 on lg, 2 on md, 1 on mobile) */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-[#145B52]/10 pb-3">
-            <div>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-[#145B52]/10 pb-3.5">
+            <div className="space-y-1">
               <h3 className={`text-lg sm:text-xl font-black text-[#145B52] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
                 {isBn ? 'মূল সেবা ক্ষেত্র ও সেবামূলক অগ্রাধিকার' : 'Core Impact Pillars & Commitments'}
               </h3>
@@ -492,7 +492,7 @@ export const AboutImpactSection: React.FC<AboutImpactSectionProps> = ({
                 {isBn ? 'নিরীক্ষিত পরিসংখ্যান প্রস্তুত হওয়া পর্যন্ত গুণগত লক্ষ্যমাত্রার ওপর ভিত্তি করে পরিচালিত।' : 'Reporting qualitative strategic priorities until official audited figures are certified.'}
               </p>
             </div>
-            <div className="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-[#145B52]/80 bg-white px-3 py-1.5 rounded-full border border-[#145B52]/10">
+            <div className="self-start sm:self-center shrink-0 flex items-center gap-1.5 text-xs font-semibold text-[#145B52]/80 bg-white px-3.5 py-1.5 rounded-full border border-[#145B52]/15 whitespace-nowrap shadow-2xs">
               <Clock className="w-3.5 h-3.5 text-[#D6B56D]" aria-hidden="true" />
               <span>{isBn ? 'অডিট প্রক্রিয়াধীন' : 'Audit in Progress'}</span>
             </div>
@@ -513,8 +513,8 @@ export const AboutImpactSection: React.FC<AboutImpactSectionProps> = ({
 
         {/* 3. Approved Achievements (Structured List of Verified Organizational Milestones) */}
         <div className="space-y-6 pt-4">
-          <div className="flex items-center justify-between border-b border-[#145B52]/10 pb-3">
-            <div>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-[#145B52]/10 pb-3.5">
+            <div className="space-y-1">
               <h3 className={`text-lg sm:text-xl font-black text-[#145B52] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
                 {isBn ? 'অনুমোদিত প্রাতিষ্ঠানিক মাইলফলকসমূহ' : 'Approved Milestones & Institutional Progress'}
               </h3>
@@ -522,7 +522,7 @@ export const AboutImpactSection: React.FC<AboutImpactSectionProps> = ({
                 {isBn ? 'কেবলমাত্র নির্ভরযোগ্য ও নথিভুক্ত প্রাতিষ্ঠানিক অগ্রগতি প্রদর্শিত।' : 'Documented organizational developments approved by institutional records.'}
               </p>
             </div>
-            <span className="text-xs font-bold text-[#276749] bg-white px-3 py-1 rounded-full border border-[#145B52]/15">
+            <span className="self-start sm:self-center shrink-0 whitespace-nowrap text-xs font-bold text-[#276749] bg-white px-3.5 py-1.5 rounded-full border border-[#145B52]/15 shadow-2xs">
               {isBn ? '৪টি অনুমোদিত ধাপ' : '4 Verified Phases'}
             </span>
           </div>
@@ -576,8 +576,8 @@ export const AboutImpactSection: React.FC<AboutImpactSectionProps> = ({
 
         {/* 4. Optional Annual Reports & Publications */}
         <div className="space-y-6 pt-4">
-          <div className="flex items-center justify-between border-b border-[#145B52]/10 pb-3">
-            <div>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-[#145B52]/10 pb-3.5">
+            <div className="space-y-1">
               <h3 className={`text-lg sm:text-xl font-black text-[#145B52] ${isBn ? 'font-[family-name:var(--font-hind-siliguri)]' : 'font-[family-name:var(--font-inter)]'}`}>
                 {isBn ? 'বার্ষিক প্রতিবেদন ও প্রাতিষ্ঠানিক প্রকাশনা' : 'Annual Reports, Transparency & Publications'}
               </h3>
@@ -585,7 +585,7 @@ export const AboutImpactSection: React.FC<AboutImpactSectionProps> = ({
                 {isBn ? 'সংস্থার কার্যক্রম ও আর্থিক শৃঙ্খলার উন্মুক্ত পর্যালোচনা সংক্রান্ত নথিপত্র।' : 'Official governance documents and community activity summaries.'}
               </p>
             </div>
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-[#145B52]">
+            <div className="self-start sm:self-center shrink-0 whitespace-nowrap flex items-center gap-1.5 text-xs font-semibold text-[#145B52] bg-white px-3.5 py-1.5 rounded-full border border-[#145B52]/15 shadow-2xs">
               <FileText className="w-3.5 h-3.5 text-[#D6B56D]" aria-hidden="true" />
               <span>{isBn ? 'উন্মুক্ত প্রকাশনা' : 'Public Archive'}</span>
             </div>
