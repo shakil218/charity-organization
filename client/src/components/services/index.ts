@@ -5,3 +5,4 @@ export * from './elderly-support';
 export * from './rehabilitation';
 export * from './social-wellbeing';
 export * from './daily-living';
+export * from './health-coordination';

@@ -8,7 +8,8 @@ import {
   ElderlySupportSection,
   RehabilitationAssistanceSection,
   SocialWellbeingSection,
-  DailyLivingSupportSection 
+  DailyLivingSupportSection,
+  HealthCoordinationSection 
 } from '@/components/services';
 
 interface PageProps {
@@ -41,6 +42,9 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
 
       {/* 7. Daily Living Support Section: Everyday Support With Dignity */}
       <DailyLivingSupportSection id="daily-living-support" imagePosition="left" />
+
+      {/* 8. Health and Wellbeing Coordination Section: Helping People Find Appropriate Support */}
+      <HealthCoordinationSection id="health-wellbeing-coordination" imagePosition="right" />
     </div>
   );
 }

@@ -78,7 +78,7 @@ export const DEFAULT_DAILY_LIVING_DATA = {
     bn: 'দৈনন্দিন সহায়তা সম্পর্কে জানুন'
   },
   ctaHref: '/contact',
-  imageSrc: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=1000',
+  imageSrc: 'https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&q=80&w=1000',
   imageAlt: {
     en: 'An older adult resting comfortably in an accessible, bright, and dignified living setting',
     bn: 'একটি নিরাপদ, আলোকিত এবং মর্যাদাপূর্ণ প্রাত্যহিক পরিবেশে প্রবীণ ব্যক্তির প্রশান্তিময় মুহূর্ত'

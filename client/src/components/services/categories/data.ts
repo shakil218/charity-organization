@@ -103,7 +103,7 @@ export const DEFAULT_SERVICE_CATEGORIES_DATA = {
         en: 'Proposed Care Plan',
         bn: 'প্রস্তাবিত পরিচর্যা'
       },
-      imageUrl: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=700',
+      imageUrl: 'https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&q=80&w=700',
       imageAlt: {
         en: 'Fresh wholesome dining and clean living quarters for elderly residents',
         bn: 'প্রবীণদের জন্য নিরাপদ আবাসন ও পুষ্টিকর খাদ্য পরিবেশন'
@@ -119,20 +119,20 @@ export const DEFAULT_SERVICE_CATEGORIES_DATA = {
         bn: 'স্বাস্থ্য ও কল্যাণ সমন্বয়'
       },
       description: {
-        en: 'Facilitating medication reminders, basic wellness checkups, and timely coordination with external clinical professionals. We coordinate foundational healthcare access while ensuring transparency and resident safety.',
-        bn: 'নিয়মিত ওষুধ সেবনের রুটিন তদারকি, প্রাথমিক স্বাস্থ্য পরীক্ষা এবং প্রয়োজনে বাহ্যিক চিকিৎসকদের সাথে সমন্বয় রক্ষা। বিশেষায়িত চিকিৎসার পরিপূরক হিসেবে আমরা প্রবীণদের মৌলিক স্বাস্থ্য সুরক্ষাকে সমন্বিত করি।'
+        en: 'Connecting seniors and families with verified healthcare information, guidance on external medical resources, and coordination support for navigating elder care services.',
+        bn: 'প্রবীণ ও তাদের পরিবারকে নির্ভরযোগ্য স্বাস্থ্য তথ্য, বহিঃস্থ চিকিৎসাসেবার দিকনির্দেশনা এবং বার্ধক্যকালীন প্রয়োজনীয় সেবা খুঁজে পেতে সংযোগ সহায়তা প্রদান।'
       },
       availabilityLabel: {
         en: 'Coordinated Program',
         bn: 'সমন্বিত কর্মসূচি'
       },
-      imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=700',
+      imageUrl: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=700',
       imageAlt: {
-        en: 'Health coordination and essential wellness monitoring equipment',
-        bn: 'স্বাস্থ্য সমন্বয় ও প্রাথমিক স্বাস্থ্য সুরক্ষা সামগ্রী'
+        en: 'Compassionate healthcare consultation and care coordination guidance',
+        bn: 'স্বাস্থ্য সমন্বয় ও চিকিৎসাসেবা বিষয়ক দিকনির্দেশনামূলক পরামর্শ'
       },
       iconName: 'HeartPulse',
-      href: '/transparency'
+      href: '#health-wellbeing-coordination'
     },
     {
       id: 'community-family-engagement',
