@@ -103,13 +103,13 @@ export const DEFAULT_SERVICE_CATEGORIES_DATA = {
         en: 'Proposed Care Plan',
         bn: 'প্রস্তাবিত পরিচর্যা'
       },
-      imageUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=700',
+      imageUrl: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=700',
       imageAlt: {
         en: 'Fresh wholesome dining and clean living quarters for elderly residents',
         bn: 'প্রবীণদের জন্য নিরাপদ আবাসন ও পুষ্টিকর খাদ্য পরিবেশন'
       },
       iconName: 'Utensils',
-      href: '/facilities'
+      href: '#daily-living-support'
     },
     {
       id: 'health-wellbeing-coordination',

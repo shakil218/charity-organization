@@ -49,7 +49,7 @@ export const ServiceCategoryCard: React.FC<ServiceCategoryCardProps> = ({ catego
 
   return (
     <motion.article
-      id={category.slug}
+      id={`category-card-${category.slug}`}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.15 }}
