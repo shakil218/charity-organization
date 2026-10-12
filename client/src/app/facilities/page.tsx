@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { CheckCircle2 } from 'lucide-react';
-import { FacilitiesHeroSection } from '@/components/facilities';
+import { FacilitiesHeroSection, FacilitiesOverviewSection } from '@/components/facilities';
 
 export default function FacilitiesPage() {
   const { locale, t } = useLanguage();
@@ -14,8 +14,11 @@ export default function FacilitiesPage() {
       {/* 1. Full-width Premium Facilities Hero Section */}
       <FacilitiesHeroSection primaryButtonHref="#facilities-overview" />
 
-      {/* 2. Facilities Cards Grid */}
-      <section id="facilities-overview" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 scroll-mt-24">
+      {/* 2. Facilities Overview Section: Philosophy & 3 Supporting Highlights */}
+      <FacilitiesOverviewSection id="facilities-overview" />
+
+      {/* 3. Facilities Cards Grid */}
+      <section id="facilities-list" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 scroll-mt-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {t.facilitiesPage.items.map((facility, idx) => (
             <div key={idx} className="bg-white rounded-3xl border border-teal-900/10 p-6 shadow-sm space-y-4 flex flex-col justify-between">
