@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
-import { useScrollDirection } from '@/hooks/useScrollDirection';
 import { 
   Home, 
   ChevronRight, 
@@ -83,8 +82,6 @@ export const FacilitiesHeroSection: React.FC<FacilitiesHeroSectionProps> = ({
 }) => {
   const { locale } = useLanguage();
   const isBn = locale === 'bn';
-  const scrollDirection = useScrollDirection();
-  const isScrollingUp = scrollDirection === 'up';
 
   const sectionEyebrow = eyebrow
     ? (eyebrow[locale] || eyebrow.en)
@@ -157,18 +154,17 @@ export const FacilitiesHeroSection: React.FC<FacilitiesHeroSectionProps> = ({
         aria-hidden="true"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-6 md:pt-8 pb-4 sm:pb-5 relative z-10">
         
         {/* 2. Integrated Breadcrumbs Navigation */}
         {showBreadcrumbs && (
           <motion.nav 
             initial={{ opacity: 0, y: -8 }}
-            animate={isScrollingUp ? { opacity: 1, y: 0 } : undefined}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.1 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
             aria-label="Breadcrumb" 
-            className="mb-6 sm:mb-8 flex items-center gap-2 text-xs sm:text-sm font-medium text-[#FAF8F2]/75"
+            className="mb-3 sm:mb-4 flex items-center gap-2 text-xs sm:text-sm font-medium text-[#FAF8F2]/75"
           >
             <ol className="flex items-center gap-2 list-none p-0 m-0">
               <li className="flex items-center">
@@ -205,11 +201,10 @@ export const FacilitiesHeroSection: React.FC<FacilitiesHeroSectionProps> = ({
           {/* Left Column: Eyebrow, Heading, Subhead, Description & CTAs */}
           <motion.div 
             initial="hidden"
-            animate={isScrollingUp ? 'visible' : undefined}
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }}
             variants={staggerContainer}
-            className="md:col-span-7 space-y-5 sm:space-y-6"
+            className="md:col-span-7 space-y-4 sm:space-y-4.5"
           >
             
             {/* Eyebrow Chip */}
@@ -288,7 +283,6 @@ export const FacilitiesHeroSection: React.FC<FacilitiesHeroSectionProps> = ({
           {/* Right Column: Warm, Welcoming Large Photograph */}
           <motion.div 
             initial="hidden"
-            animate={isScrollingUp ? 'visible' : undefined}
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }}
             variants={photoEntrance}
@@ -305,7 +299,7 @@ export const FacilitiesHeroSection: React.FC<FacilitiesHeroSectionProps> = ({
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#D6B56D]/40 bg-[#0E423B] shadow-2xl group">
               
               {/* Aspect Ratio Container with Ultra-Slow Ken Burns Subtle Zoom */}
-              <div className="relative w-full aspect-4/3 sm:aspect-16/11 md:aspect-4/3 overflow-hidden">
+              <div className="relative w-full aspect-4/3 sm:aspect-16/11 md:aspect-16/11 lg:aspect-4/3 max-h-[360px] lg:max-h-[380px] overflow-hidden">
                 <motion.div
                   className="relative w-full h-full"
                   animate={{ scale: [1, 1.05] }}
@@ -363,6 +357,38 @@ export const FacilitiesHeroSection: React.FC<FacilitiesHeroSectionProps> = ({
           </motion.div>
 
         </div>
+
+        {/* 4. Animated Scroll Down Indicator */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="mt-4 sm:mt-5 flex justify-center"
+        >
+          <a
+            href="#facilities-overview"
+            aria-label={isBn ? 'সুযোগ-সুবিধা দেখতে নিচে স্ক্রোল করুন' : 'Scroll down to explore facilities'}
+            className="group inline-flex flex-col items-center gap-1.5 text-xs font-semibold text-[#FAF8F2]/80 hover:text-[#D6B56D] transition-all focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#D6B56D] rounded-full p-2 hover:scale-105"
+          >
+            <span className={`tracking-wider uppercase text-[11px] font-bold text-[#D6B56D] group-hover:text-[#FAF8F2] transition-colors flex items-center gap-1.5 ${fontClass}`}>
+              <span>{isBn ? 'নিচে স্ক্রোল করুন' : 'Scroll Down'}</span>
+              <motion.span
+                animate={{ y: [0, 3, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                className="inline-block"
+              >
+                ↓
+              </motion.span>
+            </span>
+            <div className="w-6 h-10 rounded-full border-2 border-[#D6B56D]/70 group-hover:border-[#D6B56D] flex items-start justify-center p-1.5 transition-colors shadow-sm bg-[#0E423B]/30">
+              <motion.div
+                animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+                className="w-1.5 h-2.5 rounded-full bg-[#D6B56D]"
+              />
+            </div>
+          </a>
+        </motion.div>
 
       </div>
     </header>

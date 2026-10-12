@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
 import { Building, Sparkles, HeartHandshake, Info } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { useScrollDirection } from '@/hooks/useScrollDirection';
 import { FacilitiesOverviewSectionProps } from './types';
 import { 
   DEFAULT_FACILITIES_OVERVIEW_DATA, 
@@ -70,8 +69,6 @@ export const FacilitiesOverviewSection: React.FC<FacilitiesOverviewSectionProps>
 }) => {
   const { locale } = useLanguage();
   const isBn = locale === 'bn';
-  const scrollDirection = useScrollDirection();
-  const isScrollingUp = scrollDirection === 'up';
 
   const sectionEyebrow = eyebrow
     ? (eyebrow[locale] || eyebrow.en)
@@ -110,7 +107,6 @@ export const FacilitiesOverviewSection: React.FC<FacilitiesOverviewSectionProps>
           {/* Left Column: Large Environmental Photograph (5 cols on md, 6 cols on lg) */}
           <motion.div
             initial="hidden"
-            animate={isScrollingUp ? 'visible' : undefined}
             whileInView="visible"
             viewport={{ once: false, amount: 0.12 }}
             variants={imageFadeIn}
@@ -130,7 +126,7 @@ export const FacilitiesOverviewSection: React.FC<FacilitiesOverviewSectionProps>
               {/* Gradient Scrim for Contrast */}
               <div 
                 className="absolute inset-0 bg-gradient-to-t from-[#0A332E]/80 via-transparent to-transparent pointer-events-none" 
-                aria-hidden="true"
+                aria-hidden="true" 
               />
 
               {/* Top Floating Badge */}
@@ -164,7 +160,6 @@ export const FacilitiesOverviewSection: React.FC<FacilitiesOverviewSectionProps>
           {/* Right Column: Eyebrow, Heading, Two Paragraphs & 3 Supporting Highlights (7 cols) */}
           <motion.div
             initial="hidden"
-            animate={isScrollingUp ? 'visible' : undefined}
             whileInView="visible"
             viewport={{ once: false, amount: 0.12 }}
             variants={staggerContainer}

@@ -2,11 +2,32 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { motion, Variants } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { Sparkles, ArrowRight, PhoneCall, HelpCircle, ShieldCheck } from 'lucide-react';
 import { AccessibilitySectionProps } from './types';
 import { DEFAULT_ACCESSIBILITY_CARDS, DEFAULT_ACCESSIBILITY_HEADER } from './data';
 import { AccessibilityCard } from './AccessibilityCard';
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.06
+    }
+  }
+};
 
 export const AccessibilitySection: React.FC<AccessibilitySectionProps> = ({
   id = 'accessibility-safety',
@@ -32,7 +53,13 @@ export const AccessibilitySection: React.FC<AccessibilitySectionProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.15 }}
+          variants={fadeInUp}
+          className="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#145B52]/10 border border-[#145B52]/15 text-[#145B52] text-xs font-semibold tracking-wider uppercase">
             <Sparkles className="w-3.5 h-3.5 text-[#D6B56D]" />
             <span>{eyebrowText}</span>
@@ -48,20 +75,27 @@ export const AccessibilitySection: React.FC<AccessibilitySectionProps> = ({
           <p className="text-base sm:text-lg text-[#242B29]/80 leading-relaxed font-normal">
             {subtitleText}
           </p>
-        </div>
+        </motion.div>
 
         {/* Four Clean Cards in a Balanced Grid */}
         {cards && cards.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7"
+          >
             {cards.map((card, idx) => (
-              <AccessibilityCard
-                key={card.id}
-                card={card}
-                locale={locale}
-                index={idx}
-              />
+              <motion.div key={card.id} variants={fadeInUp} className="h-full">
+                <AccessibilityCard
+                  card={card}
+                  locale={locale}
+                  index={idx}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <div className="p-8 rounded-3xl bg-white border border-teal-900/10 text-center max-w-lg mx-auto space-y-3">
             <HelpCircle className="w-10 h-10 text-[#145B52] mx-auto opacity-40" />
@@ -78,7 +112,13 @@ export const AccessibilitySection: React.FC<AccessibilitySectionProps> = ({
 
         {/* Specific Needs & Ethical Contact Prompt Banner */}
         {showContactPrompt && (
-          <div className="mt-14 sm:mt-16 rounded-3xl bg-white border border-teal-900/10 p-6 sm:p-8 lg:p-10 shadow-sm relative overflow-hidden">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.15 }}
+            variants={fadeInUp}
+            className="mt-14 sm:mt-16 rounded-3xl bg-white border border-teal-900/10 p-6 sm:p-8 lg:p-10 shadow-sm relative overflow-hidden"
+          >
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
               <div className="space-y-2.5 max-w-3xl">
                 <div className="flex items-center gap-2 text-xs font-bold text-[#276749] uppercase tracking-wider">
@@ -114,7 +154,7 @@ export const AccessibilitySection: React.FC<AccessibilitySectionProps> = ({
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

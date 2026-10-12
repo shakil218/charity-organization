@@ -2,12 +2,33 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { motion, Variants } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { Sparkles, ShieldCheck, ArrowRight, PhoneCall, HelpCircle } from 'lucide-react';
 import { FacilitiesAmenitiesSectionProps, FacilityAmenityItem } from './types';
 import { DEFAULT_FACILITIES_AMENITIES, DEFAULT_FACILITIES_AMENITIES_HEADER } from './data';
 import { FacilityCard } from './FacilityCard';
 import { FacilityPhotoModal } from './FacilityPhotoModal';
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.06
+    }
+  }
+};
 
 export const FacilitiesAmenitiesSection: React.FC<FacilitiesAmenitiesSectionProps> = ({
   id = 'facilities-list',
@@ -42,7 +63,13 @@ export const FacilitiesAmenitiesSection: React.FC<FacilitiesAmenitiesSectionProp
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.15 }}
+          variants={fadeInUp}
+          className="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#145B52]/10 border border-[#145B52]/15 text-[#145B52] text-xs font-semibold tracking-wider uppercase">
             <Sparkles className="w-3.5 h-3.5 text-[#D6B56D]" />
             <span>{eyebrowText}</span>
@@ -58,20 +85,27 @@ export const FacilitiesAmenitiesSection: React.FC<FacilitiesAmenitiesSectionProp
           <p className="text-base sm:text-lg text-[#242B29]/80 leading-relaxed font-normal">
             {subtitleText}
           </p>
-        </div>
+        </motion.div>
 
         {/* 6 Facilities Cards Responsive Grid (3 cols desktop, 2 cols tablet, 1 col mobile) */}
         {verifiedFacilities.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {verifiedFacilities.map((facility) => (
-              <FacilityCard
-                key={facility.id}
-                facility={facility}
-                locale={locale}
-                onViewPhoto={(item) => setSelectedFacility(item)}
-              />
+              <motion.div key={facility.id} variants={fadeInUp}>
+                <FacilityCard
+                  facility={facility}
+                  locale={locale}
+                  onViewPhoto={(item) => setSelectedFacility(item)}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <div className="p-8 rounded-3xl bg-white border border-teal-900/10 text-center max-w-lg mx-auto space-y-3">
             <HelpCircle className="w-10 h-10 text-[#145B52] mx-auto opacity-40" />
@@ -88,7 +122,13 @@ export const FacilitiesAmenitiesSection: React.FC<FacilitiesAmenitiesSectionProp
 
         {/* Accuracy and Transparency Notice */}
         {showVerificationNotice && (
-          <div className="mt-12 p-5 sm:p-6 rounded-3xl bg-white/80 backdrop-blur-sm border border-teal-900/10 shadow-sm max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.15 }}
+            variants={fadeInUp}
+            className="mt-12 p-5 sm:p-6 rounded-3xl bg-white/80 backdrop-blur-sm border border-teal-900/10 shadow-sm max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          >
             <div className="p-2.5 rounded-2xl bg-[#145B52]/10 text-[#145B52] flex-shrink-0">
               <ShieldCheck className="w-6 h-6 text-[#145B52]" />
             </div>
@@ -110,7 +150,7 @@ export const FacilitiesAmenitiesSection: React.FC<FacilitiesAmenitiesSectionProp
               <span>{locale === 'bn' ? 'যোগাযোগ করুন' : 'Contact Office'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
-          </div>
+          </motion.div>
         )}
 
         {/* Bottom Campus Inquiry Banner */}

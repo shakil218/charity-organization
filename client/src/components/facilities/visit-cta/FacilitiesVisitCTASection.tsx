@@ -122,7 +122,7 @@ export const FacilitiesVisitCTASection: React.FC<FacilitiesVisitCTASectionProps>
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={staggerContainer}
             className={`${showEntranceImage ? 'lg:col-span-7' : 'max-w-4xl mx-auto text-center'} space-y-7 sm:space-y-8`}
           >
@@ -266,7 +266,7 @@ export const FacilitiesVisitCTASection: React.FC<FacilitiesVisitCTASectionProps>
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.1 }}
               variants={imageEntrance}
               className="lg:col-span-5 relative"
             >

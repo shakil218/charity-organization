@@ -2,11 +2,21 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { motion, Variants } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { Sparkles, ShieldCheck, ArrowRight, HelpCircle } from 'lucide-react';
 import { LivingSpacesSectionProps } from './types';
 import { DEFAULT_LIVING_SPACES, DEFAULT_LIVING_SPACES_HEADER } from './data';
 import { LivingSpaceBlock } from './LivingSpaceBlock';
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] }
+  }
+};
 
 export const LivingSpacesSection: React.FC<LivingSpacesSectionProps> = ({
   id = 'living-spaces',
@@ -40,7 +50,13 @@ export const LivingSpacesSection: React.FC<LivingSpacesSectionProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 sm:mb-24">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.15 }}
+          variants={fadeInUp}
+          className="text-center max-w-3xl mx-auto space-y-4 mb-16 sm:mb-24"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#145B52]/10 border border-[#145B52]/15 text-[#145B52] text-xs font-semibold tracking-wider uppercase">
             <Sparkles className="w-3.5 h-3.5 text-[#D6B56D]" />
             <span>{eyebrowText}</span>
@@ -56,7 +72,7 @@ export const LivingSpacesSection: React.FC<LivingSpacesSectionProps> = ({
           <p className="text-base sm:text-lg text-[#242B29]/80 leading-relaxed font-normal">
             {subtitleText}
           </p>
-        </div>
+        </motion.div>
 
         {/* Alternating Two-Column Blocks (Two-column on md & lg) */}
         {verifiedSpaces.length > 0 ? (
@@ -87,7 +103,13 @@ export const LivingSpacesSection: React.FC<LivingSpacesSectionProps> = ({
 
         {/* Accuracy and Availability Notice Banner */}
         {showNotice && (
-          <div className="mt-20 sm:mt-28 p-6 sm:p-8 rounded-3xl bg-white border border-teal-900/10 shadow-sm max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.15 }}
+            variants={fadeInUp}
+            className="mt-20 sm:mt-28 p-6 sm:p-8 rounded-3xl bg-white border border-teal-900/10 shadow-sm max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-5"
+          >
             <div className="p-3 rounded-2xl bg-[#145B52]/10 text-[#145B52] flex-shrink-0">
               <ShieldCheck className="w-7 h-7 text-[#145B52]" />
             </div>
@@ -111,7 +133,7 @@ export const LivingSpacesSection: React.FC<LivingSpacesSectionProps> = ({
               <span>{locale === 'bn' ? 'যোগাযোগ করুন' : 'Inquire Directly'}</span>
               <ArrowRight className="w-4 h-4 text-[#D6B56D]" />
             </Link>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

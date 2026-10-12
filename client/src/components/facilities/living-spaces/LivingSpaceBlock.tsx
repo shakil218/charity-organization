@@ -49,7 +49,7 @@ export const LivingSpaceBlock: React.FC<LivingSpaceBlockProps> = ({
         variants={imageVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.05 }}
+        viewport={{ once: false, amount: 0.08 }}
         className="w-full md:w-1/2 relative group"
       >
         <div className="relative aspect-[16/11] sm:aspect-[16/10] w-full rounded-3xl overflow-hidden bg-teal-950/5 border-2 border-teal-900/10 shadow-lg hover:shadow-xl transition-all duration-300">
@@ -101,7 +101,7 @@ export const LivingSpaceBlock: React.FC<LivingSpaceBlockProps> = ({
         variants={contentVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.05 }}
+        viewport={{ once: false, amount: 0.08 }}
         className="w-full md:w-1/2 space-y-4 md:space-y-5"
       >
         {/* Status / Category Badges */}

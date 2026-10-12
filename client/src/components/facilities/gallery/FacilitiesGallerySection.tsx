@@ -127,7 +127,7 @@ export const FacilitiesGallerySection: React.FC<FacilitiesGallerySectionProps> =
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.1 }}
           variants={fadeInUp}
           className="text-center max-w-3xl mx-auto space-y-3.5"
         >
@@ -220,7 +220,7 @@ export const FacilitiesGallerySection: React.FC<FacilitiesGallerySectionProps> =
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.1 }}
               variants={fadeInUp}
             >
               <FacilityGalleryFeaturedCard
@@ -236,7 +236,7 @@ export const FacilitiesGallerySection: React.FC<FacilitiesGallerySectionProps> =
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
+              viewport={{ once: false, amount: 0.08 }}
               variants={staggerContainer}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
             >
@@ -259,7 +259,7 @@ export const FacilitiesGallerySection: React.FC<FacilitiesGallerySectionProps> =
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={fadeInUp}
             className="p-5 sm:p-6 rounded-2xl bg-white border border-[#145B52]/15 shadow-2xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
           >
