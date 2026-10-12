@@ -10,7 +10,7 @@ export const Breadcrumbs: React.FC = () => {
   const pathname = usePathname();
   const { locale, t } = useLanguage();
 
-  if (pathname === '/' || pathname === '/about' || pathname === '/services') return null;
+  if (pathname === '/' || pathname === '/about' || pathname === '/services' || pathname === '/facilities') return null;
 
   const pathSegments = pathname.split('/').filter(Boolean);
 

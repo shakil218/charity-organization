@@ -3,32 +3,19 @@
 import React from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
-import { Building, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
+import { FacilitiesHeroSection } from '@/components/facilities';
 
 export default function FacilitiesPage() {
   const { locale, t } = useLanguage();
 
   return (
-    <div className="space-y-16 py-12">
-      
-      {/* Header Banner */}
-      <section className="bg-gradient-to-r from-[#145B52] to-[#276749] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-[#D6B56D]/30">
-        <div className="max-w-7xl mx-auto space-y-4 text-center max-w-3xl">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#D6B56D]/20 border border-[#D6B56D]/40 text-[#D6B56D] text-xs font-bold">
-            <Building className="w-4 h-4 text-[#D6B56D]" />
-            <span>{locale === 'bn' ? 'অবকাঠামো ও আবাসন' : 'Campus & Facilities'}</span>
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#FAF8F2]">
-            {t.facilitiesPage.title}
-          </h1>
-          <p className="text-base text-teal-100/90 leading-relaxed">
-            {t.facilitiesPage.subtitle}
-          </p>
-        </div>
-      </section>
+    <div className="flex flex-col">
+      {/* 1. Full-width Premium Facilities Hero Section */}
+      <FacilitiesHeroSection primaryButtonHref="#facilities-overview" />
 
-      {/* Facilities Cards Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 2. Facilities Cards Grid */}
+      <section id="facilities-overview" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 scroll-mt-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {t.facilitiesPage.items.map((facility, idx) => (
             <div key={idx} className="bg-white rounded-3xl border border-teal-900/10 p-6 shadow-sm space-y-4 flex flex-col justify-between">
