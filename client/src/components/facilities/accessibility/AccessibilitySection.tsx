@@ -95,11 +95,11 @@ export const AccessibilitySection: React.FC<AccessibilitySectionProps> = ({
                 </p>
               </div>
 
-              {/* Action Buttons: Keep Side-by-Side in Flex Row */}
-              <div className="flex flex-row items-center gap-2.5 sm:gap-3.5 shrink-0 flex-nowrap pt-2 lg:pt-0">
+              {/* Action Buttons: Responsive layout preventing any overflow on sm/mobile devices */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 w-full lg:w-auto shrink-0 pt-3 lg:pt-0 max-w-full">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-2xl bg-[#145B52] hover:bg-[#0f443d] text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200 hover:scale-[1.02] shrink-0 whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl bg-[#145B52] hover:bg-[#0f443d] text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200 hover:scale-[1.02] text-center"
                 >
                   <span>{promptData.buttonText[locale] || promptData.buttonText.en}</span>
                   <ArrowRight className="w-4 h-4 text-[#D6B56D] shrink-0" />
@@ -107,7 +107,7 @@ export const AccessibilitySection: React.FC<AccessibilitySectionProps> = ({
 
                 <a
                   href="tel:+8801700000000"
-                  className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-5 py-3 sm:py-3.5 rounded-2xl bg-[#FAF8F2] hover:bg-gray-100 text-[#145B52] font-semibold text-xs sm:text-sm border border-teal-900/15 transition-colors shrink-0 whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl bg-[#FAF8F2] hover:bg-gray-100 text-[#145B52] font-semibold text-xs sm:text-sm border border-teal-900/15 transition-colors text-center whitespace-nowrap"
                 >
                   <PhoneCall className="w-4 h-4 text-[#145B52] shrink-0" />
                   <span>+880 1700-000000</span>
