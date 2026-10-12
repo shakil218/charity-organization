@@ -13,7 +13,8 @@ import {
   HowServicesWorkSection,
   WhoWeSupportSection,
   CarePrinciplesSection,
-  PracticalInformationSection
+  PracticalInformationSection,
+  ServicesFAQSection
 } from '@/components/services';
 
 interface PageProps {
@@ -61,6 +62,9 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
 
       {/* 12. Service Availability & Information: Practical Information */}
       <PracticalInformationSection id="practical-information" />
+
+      {/* 13. Frequently Asked Questions Section */}
+      <ServicesFAQSection id="services-faq" />
     </div>
   );
 }
