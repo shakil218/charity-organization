@@ -11,3 +11,4 @@ export * from './who-we-support';
 export * from './care-principles';
 export * from './practical-information';
 export * from './faq';
+export * from './get-involved';

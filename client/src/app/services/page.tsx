@@ -14,7 +14,8 @@ import {
   WhoWeSupportSection,
   CarePrinciplesSection,
   PracticalInformationSection,
-  ServicesFAQSection
+  ServicesFAQSection,
+  ServicesGetInvolvedCTASection
 } from '@/components/services';
 
 interface PageProps {
@@ -65,6 +66,9 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
 
       {/* 13. Frequently Asked Questions Section */}
       <ServicesFAQSection id="services-faq" />
+
+      {/* 14. Get Involved Call-to-Action Section */}
+      <ServicesGetInvolvedCTASection id="get-involved-cta" />
     </div>
   );
 }
