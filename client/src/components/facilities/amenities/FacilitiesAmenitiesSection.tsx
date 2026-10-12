@@ -118,7 +118,7 @@ export const FacilitiesAmenitiesSection: React.FC<FacilitiesAmenitiesSectionProp
           <div className="absolute top-0 right-0 -mt-12 -mr-12 w-48 h-48 rounded-full bg-[#D6B56D]/10 blur-2xl pointer-events-none" />
           
           <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
+            <div className="space-y-2 flex-1 min-w-0 max-w-2xl lg:pr-6">
               <span className="text-xs uppercase tracking-wider text-[#D6B56D] font-bold">
                 {locale === 'bn' ? 'ক্যাম্পাস পরিদর্শন ও অনুসন্ধান' : 'Campus Visits & Inquiries'}
               </span>
@@ -134,19 +134,19 @@ export const FacilitiesAmenitiesSection: React.FC<FacilitiesAmenitiesSectionProp
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-row items-center gap-2.5 sm:gap-3.5 shrink-0 flex-nowrap">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[#D6B56D] hover:bg-[#c4a45a] text-teal-950 font-bold text-sm shadow-md transition-all duration-200 hover:scale-[1.02]"
+                className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-2xl bg-[#D6B56D] hover:bg-[#c4a45a] text-teal-950 font-bold text-xs sm:text-sm shadow-md transition-all duration-200 hover:scale-[1.02] shrink-0 whitespace-nowrap"
               >
                 <span>{locale === 'bn' ? 'অনুরোধ পাঠান' : 'Submit an Inquiry'}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </Link>
               <a
                 href="tel:+8801700000000"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-medium text-sm border border-white/20 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-5 py-3 sm:py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm border border-white/20 transition-colors shrink-0 whitespace-nowrap"
               >
-                <PhoneCall className="w-4 h-4 text-[#D6B56D]" />
+                <PhoneCall className="w-4 h-4 text-[#D6B56D] shrink-0" />
                 <span>+880 1700-000000</span>
               </a>
             </div>
