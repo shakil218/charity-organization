@@ -6,7 +6,8 @@ import { useLanguage } from '@/context/LanguageContext';
 import {
   FacilitiesHeroSection,
   FacilitiesOverviewSection,
-  FacilitiesAmenitiesSection
+  FacilitiesAmenitiesSection,
+  LivingSpacesSection
 } from '@/components/facilities';
 
 export default function FacilitiesPage() {
@@ -22,6 +23,9 @@ export default function FacilitiesPage() {
 
       {/* 3. Main Facilities & Amenities Section: 6 Verified Categories Grid & Photo Lightbox */}
       <FacilitiesAmenitiesSection id="facilities-list" />
+
+      {/* 4. Living Spaces & Common Areas Section: Alternating Two-Column Everyday Spaces */}
+      <LivingSpacesSection id="everyday-spaces" />
 
 
       {/* Facility Visual Showcase */}
