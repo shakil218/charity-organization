@@ -7,20 +7,20 @@ import { Info, Sparkles, CheckCircle2 } from 'lucide-react';
 import { LivingSpaceBlockProps } from './types';
 
 const contentVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
   }
 };
 
 const imageVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.95 },
+  hidden: { opacity: 0, scale: 0.98 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
   }
 };
 
@@ -41,16 +41,16 @@ export const LivingSpaceBlock: React.FC<LivingSpaceBlockProps> = ({
   return (
     <div
       className={`flex flex-col ${
-        isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
-      } items-center gap-10 lg:gap-14 xl:gap-20`}
+        isReversed ? 'md:flex-row-reverse' : 'md:flex-row'
+      } items-center gap-8 md:gap-10 lg:gap-14 xl:gap-20`}
     >
-      {/* 1. Photograph Column (5 or 6 cols) */}
+      {/* 1. Photograph Column (5 or 6 cols on md & lg) */}
       <motion.div
         variants={imageVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="w-full lg:w-1/2 relative group"
+        viewport={{ once: true, amount: 0.05 }}
+        className="w-full md:w-1/2 relative group"
       >
         <div className="relative aspect-[16/11] sm:aspect-[16/10] w-full rounded-3xl overflow-hidden bg-teal-950/5 border-2 border-teal-900/10 shadow-lg hover:shadow-xl transition-all duration-300">
           <Image
@@ -96,13 +96,13 @@ export const LivingSpaceBlock: React.FC<LivingSpaceBlockProps> = ({
         />
       </motion.div>
 
-      {/* 2. Text & Description Column (6 cols) */}
+      {/* 2. Text & Description Column (6 cols on md & lg) */}
       <motion.div
         variants={contentVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="w-full lg:w-1/2 space-y-5"
+        viewport={{ once: true, amount: 0.05 }}
+        className="w-full md:w-1/2 space-y-4 md:space-y-5"
       >
         {/* Status / Category Badges */}
         <div className="flex flex-wrap items-center gap-2">
@@ -133,18 +133,18 @@ export const LivingSpaceBlock: React.FC<LivingSpaceBlockProps> = ({
             <h4 className="text-xs font-bold text-[#145B52] uppercase tracking-wider flex items-center gap-1.5">
               <span>{locale === 'bn' ? 'সুবিধাসমূহ ও এক্সেসিবিলিটি রূপরেখা' : 'Accessibility & Living Highlights'}</span>
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-2.5">
               {space.accessibilityFeatures.map((feat) => {
                 const FeatIcon = feat.icon || CheckCircle2;
                 return (
                   <div
                     key={feat.id}
-                    className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-teal-900/10 shadow-xs text-xs text-[#242B29]/85"
+                    className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-teal-900/10 shadow-xs text-xs text-[#242B29]/85"
                   >
                     <div className="w-6 h-6 rounded-lg bg-[#145B52]/10 text-[#145B52] flex items-center justify-center flex-shrink-0">
                       <FeatIcon className="w-3.5 h-3.5 text-[#145B52]" />
                     </div>
-                    <span className="font-medium truncate">{feat.label[locale] || feat.label.en}</span>
+                    <span className="font-medium leading-snug">{feat.label[locale] || feat.label.en}</span>
                   </div>
                 );
               })}

@@ -48,7 +48,7 @@ export const LivingSpacesSection: React.FC<LivingSpacesSectionProps> = ({
 
           <h2
             id="living-spaces-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#145B52] tracking-tight leading-tight"
+            className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold text-[#145B52] tracking-tight leading-tight"
           >
             {headingText}
           </h2>
@@ -58,9 +58,9 @@ export const LivingSpacesSection: React.FC<LivingSpacesSectionProps> = ({
           </p>
         </div>
 
-        {/* Alternating Two-Column Blocks */}
+        {/* Alternating Two-Column Blocks (Two-column on md & lg) */}
         {verifiedSpaces.length > 0 ? (
-          <div className="space-y-20 sm:space-y-28 lg:space-y-32">
+          <div className="space-y-16 md:space-y-24 lg:space-y-32">
             {verifiedSpaces.map((space, idx) => (
               <LivingSpaceBlock
                 key={space.id}
