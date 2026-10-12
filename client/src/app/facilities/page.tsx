@@ -7,7 +7,8 @@ import {
   FacilitiesAmenitiesSection,
   LivingSpacesSection,
   AccessibilitySection,
-  FacilitiesGallerySection
+  FacilitiesGallerySection,
+  FacilitiesVisitCTASection
 } from '@/components/facilities';
 
 export default function FacilitiesPage() {
@@ -30,6 +31,9 @@ export default function FacilitiesPage() {
 
       {/* 6. Premium Facilities Photo Gallery Section: Take a Closer Look */}
       <FacilitiesGallerySection id="facilities-gallery" />
+
+      {/* 7. Final Visit Our Center CTA Section: Would You Like to Know More About Our Facilities? */}
+      <FacilitiesVisitCTASection id="facilities-visit-cta" />
     </div>
   );
 }
