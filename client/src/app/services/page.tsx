@@ -15,7 +15,8 @@ import {
   CarePrinciplesSection,
   PracticalInformationSection,
   ServicesFAQSection,
-  ServicesGetInvolvedCTASection
+  ServicesGetInvolvedCTASection,
+  ServicesContactCTASection
 } from '@/components/services';
 
 interface PageProps {
@@ -69,6 +70,9 @@ export default function ServicesPage({ onOpenDonateModal }: PageProps) {
 
       {/* 14. Get Involved Call-to-Action Section */}
       <ServicesGetInvolvedCTASection id="get-involved-cta" />
+
+      {/* 15. Final Contact Call-to-Action Section */}
+      <ServicesContactCTASection id="services-contact-cta" />
     </div>
   );
 }

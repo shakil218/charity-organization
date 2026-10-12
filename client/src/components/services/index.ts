@@ -12,3 +12,4 @@ export * from './care-principles';
 export * from './practical-information';
 export * from './faq';
 export * from './get-involved';
+export * from './contact-cta';
