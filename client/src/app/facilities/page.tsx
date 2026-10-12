@@ -7,7 +7,8 @@ import {
   FacilitiesHeroSection,
   FacilitiesOverviewSection,
   FacilitiesAmenitiesSection,
-  LivingSpacesSection
+  LivingSpacesSection,
+  AccessibilitySection
 } from '@/components/facilities';
 
 export default function FacilitiesPage() {
@@ -26,6 +27,9 @@ export default function FacilitiesPage() {
 
       {/* 4. Living Spaces & Common Areas Section: Alternating Two-Column Everyday Spaces */}
       <LivingSpacesSection id="everyday-spaces" />
+
+      {/* 5. Accessibility, Safety & Comfort Section: 4 Clean Cards & Inquiries Prompt */}
+      <AccessibilitySection id="accessibility-safety" />
 
 
       {/* Facility Visual Showcase */}
